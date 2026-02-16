@@ -39,7 +39,9 @@ export function MagneticButton({
     const distanceX = e.clientX - centerX;
     const distanceY = e.clientY - centerY;
 
-
+    // Aplicar movimiento con fuerza ajustable
+    x.set(distanceX * strength);
+    y.set(distanceY * strength);
   };
 
   const handleMouseLeave = () => {

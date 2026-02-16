@@ -5,7 +5,7 @@ import {
   NumberCounter,
 } from "@/components/effects";
 import Link from "next/link";
-import { Check, X, Video } from "lucide-react";
+import { Check, X } from "lucide-react";
 
 export const metadata = {
   title: "Processia CRM - AI-Powered Customer Management",
