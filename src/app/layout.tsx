@@ -4,56 +4,62 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { Navbar, Footer } from "@/components/layout";
 import { DotGrid, CursorSpotlight } from "@/components/effects";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Processia - Intelligent Automation Platform",
   description:
-    "Build processes that scale. Not teams that don't. AI-powered automation for modern businesses.",
+    "Construye procesos que escalan. No equipos que no lo hagan. Automatización impulsada por IA para negocios modernos.",
   keywords: [
-    "automation",
-    "AI",
+    "automatización",
+    "IA",
     "CRM",
-    "workflow",
-    "business automation",
+    "flujo de trabajo",
+    "automatización empresarial",
     "n8n",
   ],
   authors: [{ name: "Processia" }],
   openGraph: {
-    title: "Processia - Intelligent Automation Platform",
+    title: "Processia - Plataforma de Automatización Inteligente",
     description:
-      "Build processes that scale. Not teams that don't. AI-powered automation for modern businesses.",
+      "Construye procesos que escalan. No equipos que no lo hagan. Automatización impulsada por IA.",
     type: "website",
-    locale: "en_US",
+    locale: "es_ES",
     siteName: "Processia",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Processia - Intelligent Automation Platform",
+    title: "Processia - Plataforma de Automatización Inteligente",
     description:
-      "Build processes that scale. Not teams that don't.",
+      "Construye procesos que escalan. No equipos que no lo hagan.",
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const messages = await getMessages();
+
   return (
-    <html lang="en" className="dark">
+    <html lang="es" className="dark">
       <body
         className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}
       >
-        {/* Background Effects */}
-        <DotGrid />
-        <CursorSpotlight />
+        <NextIntlClientProvider messages={messages}>
+          {/* Background Effects */}
+          <DotGrid />
+          <CursorSpotlight />
 
-        {/* Layout Structure */}
-        <div className="relative flex flex-col min-h-screen">
-          <Navbar />
-          <main className="flex-1 pt-16">{children}</main>
-          <Footer />
-        </div>
+          {/* Layout Structure */}
+          <div className="relative flex flex-col min-h-screen">
+            <Navbar />
+            <main className="flex-1 pt-16">{children}</main>
+            <Footer />
+          </div>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

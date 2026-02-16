@@ -174,10 +174,13 @@ export default function CRMPage() {
         <div className="relative max-w-5xl mx-auto">
           <GlassCard glow={true} animatedBorder={true}>
             <div className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center">
-              <div className="text-center">
-                <Video className="w-24 h-24 mx-auto mb-4 text-primary" />
-                <p className="text-muted-foreground">Product Demo Video</p>
-              </div>
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1"
+                title="Processia CRM Demo"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
             </div>
           </GlassCard>
         </div>
@@ -219,9 +222,8 @@ export default function CRMPage() {
         {features.map((feature, index) => (
           <div
             key={feature.title}
-            className={`grid md:grid-cols-2 gap-12 items-center ${
-              index % 2 === 1 ? "md:flex-row-reverse" : ""
-            }`}
+            className={`grid md:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? "md:flex-row-reverse" : ""
+              }`}
           >
             <div className={index % 2 === 1 ? "md:order-2" : ""}>
               <h2 className="text-4xl font-bold mb-4">
@@ -289,11 +291,10 @@ export default function CRMPage() {
                   className="w-full"
                 >
                   <button
-                    className={`w-full px-6 py-3 rounded-lg font-semibold transition-colors ${
-                      plan.highlighted
-                        ? "bg-primary text-white hover:bg-primary-hover"
-                        : "border border-border hover:bg-card-hover"
-                    }`}
+                    className={`w-full px-6 py-3 rounded-lg font-semibold transition-colors ${plan.highlighted
+                      ? "bg-primary text-white hover:bg-primary-hover"
+                      : "border border-border hover:bg-card-hover"
+                      }`}
                   >
                     Get Started
                   </button>

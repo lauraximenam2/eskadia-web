@@ -5,8 +5,11 @@ import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { GradientText, MagneticButton, ShimmerButton } from "@/components/effects";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import { useTranslations } from "next-intl";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function Navbar() {
+  const t = useTranslations("nav");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -42,7 +45,7 @@ export function Navbar() {
             <DropdownMenu.Root>
               <DropdownMenu.Trigger asChild>
                 <button className="flex items-center space-x-1 text-foreground hover:text-primary transition-colors">
-                  <span>Products</span>
+                  <span>{t("products")}</span>
                   <ChevronDown className="w-4 h-4" />
                 </button>
               </DropdownMenu.Trigger>
@@ -58,10 +61,10 @@ export function Navbar() {
                       className="flex flex-col px-4 py-3 rounded-md hover:bg-card-hover transition-colors cursor-pointer outline-none"
                     >
                       <span className="font-semibold text-foreground">
-                        Processia CRM
+                        {t("crm")}
                       </span>
                       <span className="text-sm text-muted-foreground">
-                        Customer relationship management
+                        {t("crmDesc")}
                       </span>
                     </Link>
                   </DropdownMenu.Item>
@@ -72,10 +75,10 @@ export function Navbar() {
                       className="flex flex-col px-4 py-3 rounded-md hover:bg-card-hover transition-colors cursor-pointer outline-none"
                     >
                       <span className="font-semibold text-foreground">
-                        Processia Academy
+                        {t("academy")}
                       </span>
                       <span className="text-sm text-muted-foreground">
-                        Learn business automation
+                        {t("academyDesc")}
                       </span>
                     </Link>
                   </DropdownMenu.Item>
@@ -87,25 +90,27 @@ export function Navbar() {
               href="/pricing"
               className="text-foreground hover:text-primary transition-colors"
             >
-              Pricing
+              {t("pricing")}
             </Link>
 
             <Link
               href="/about"
               className="text-foreground hover:text-primary transition-colors"
             >
-              About
+              {t("about")}
             </Link>
           </div>
 
           {/* Desktop CTAs */}
           <div className="hidden md:flex items-center space-x-4">
+            <LanguageSwitcher />
+
             <MagneticButton>
               <Link
                 href="/login"
                 className="px-4 py-2 text-foreground hover:text-primary transition-colors"
               >
-                Login
+                {t("login")}
               </Link>
             </MagneticButton>
 
@@ -114,7 +119,7 @@ export function Navbar() {
                 href="/get-started"
                 className="px-6 py-2 bg-primary hover:bg-primary-hover text-white rounded-lg font-semibold transition-colors"
               >
-                Get Started
+                {t("getStarted")}
               </Link>
             </ShimmerButton>
           </div>
@@ -138,21 +143,21 @@ export function Navbar() {
           <div className="md:hidden pb-6 pt-2 space-y-4 border-t border-border mt-2">
             <div className="space-y-2">
               <p className="text-sm font-semibold text-muted-foreground px-4">
-                Products
+                {t("products")}
               </p>
               <Link
                 href="/crm"
                 className="block px-4 py-2 text-foreground hover:bg-card-hover rounded-lg transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Processia CRM
+                {t("crm")}
               </Link>
               <Link
                 href="/academy"
                 className="block px-4 py-2 text-foreground hover:bg-card-hover rounded-lg transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Processia Academy
+                {t("academy")}
               </Link>
             </div>
 
@@ -161,7 +166,7 @@ export function Navbar() {
               className="block px-4 py-2 text-foreground hover:bg-card-hover rounded-lg transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Pricing
+              {t("pricing")}
             </Link>
 
             <Link
@@ -169,8 +174,12 @@ export function Navbar() {
               className="block px-4 py-2 text-foreground hover:bg-card-hover rounded-lg transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              About
+              {t("about")}
             </Link>
+
+            <div className="px-4 py-2">
+              <LanguageSwitcher />
+            </div>
 
             <div className="flex flex-col space-y-2 px-4 pt-4">
               <Link
@@ -178,14 +187,14 @@ export function Navbar() {
                 className="px-4 py-2 text-center border border-border rounded-lg hover:bg-card-hover transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Login
+                {t("login")}
               </Link>
               <Link
                 href="/get-started"
                 className="px-4 py-2 text-center bg-primary hover:bg-primary-hover text-white rounded-lg font-semibold transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Get Started
+                {t("getStarted")}
               </Link>
             </div>
           </div>
