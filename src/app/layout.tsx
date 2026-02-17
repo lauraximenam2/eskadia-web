@@ -4,6 +4,7 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { Navbar, Footer } from "@/components/layout";
 import { DotGrid, CursorSpotlight } from "@/components/effects";
+import { ChatWidget } from "@/components/chat/chat-widget";
 
 export const metadata: Metadata = {
   title: "Processia - Intelligent Automation Platform",
@@ -54,6 +55,9 @@ export default function RootLayout({
           <main className="flex-1 pt-16">{children}</main>
           <Footer />
         </div>
+
+        {/* Chat Widget */}
+        <ChatWidget />
       </body>
     </html>
   );

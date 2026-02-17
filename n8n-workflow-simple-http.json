@@ -1,0 +1,259 @@
+{
+  "name": "Processia AI Chat (Simple HTTP)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "processia-chat",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        300
+      ],
+      "webhookId": "processia-chat"
+    },
+    {
+      "parameters": {
+        "url": "=https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/public/data/processia-content.json",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "load-knowledge",
+      "name": "Load Knowledge",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        460,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extraer mensaje del webhook\nconst body = $input.first().json.body;\nconst message = body.message;\nconst sessionId = body.sessionId || `session_${Date.now()}`;\n\n// Obtener knowledge base\nconst kb = $('Load Knowledge').first().json;\n\n// Construir prompt del sistema\nconst systemPrompt = `Eres el asistente inteligente de Processia.ai, una plataforma de automatización empresarial.\n\n## INFORMACIÓN DE PROCESSIA:\n\n### CRM - Processia Core:\n- CRM accionable con IA integrada\n- Enriquecimiento automático con Apollo.io\n- Automatización nativa con n8n\n- Redacción automática de emails y cotizaciones\n- Precios: Gratis (básico), Pro ($97-$497/mes), Enterprise (personalizado)\n- Setup inicial: $1,500 - $5,000\n- Target: Startups y PyMES de 10-200 empleados\n\n### Servicios - Processia Flow:\n- Consultoría técnica en automatización\n- Auditoría e implementación de procesos\n- Proyectos: $3,000 - $15,000\n- Retainer: $500 - $2,500/mes\n\n### Academia - Processia Academy:\n- Cursos sobre n8n, IA y automatización\n- Certificaciones profesionales\n- Cursos desde gratis hasta $2,997\n- Bootcamps B2B: $997 - $5,000\n\n### Valores Únicos:\n- Modelo Product-Led Growth con nivel gratuito\n- IA integrada (no bolt-on)\n- Datos enriquecidos automáticamente\n- Automatización sin código\n\n## INSTRUCCIONES:\n1. Responde en español, tono profesional pero amigable\n2. Usa emojis ocasionalmente (1-2 por mensaje)\n3. Respuestas concisas: máximo 200 palabras\n4. Si no sabes algo, sé honesto\n5. Enfatiza beneficios sobre características\n6. Menciona el modelo freemium cuando sea relevante`;\n\nreturn {\n  json: {\n    systemPrompt,\n    userMessage: message,\n    sessionId,\n    knowledgeBase: kb\n  }\n};"
+      },
+      "id": "prepare-prompt",
+      "name": "Prepare Prompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        680,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/v1/chat/completions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "deepseekApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $credentials.apiKey }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "model",
+              "value": "deepseek-chat"
+            },
+            {
+              "name": "messages",
+              "value": "={{ [{\"role\": \"system\", \"content\": $json.systemPrompt}, {\"role\": \"user\", \"content\": $json.userMessage}] }}"
+            },
+            {
+              "name": "temperature",
+              "value": "0.7"
+            },
+            {
+              "name": "max_tokens",
+              "value": "500"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "call-deepseek",
+      "name": "Call DeepSeek API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        900,
+        300
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "deepseek-header-auth",
+          "name": "DeepSeek API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener respuesta de DeepSeek\nconst aiData = $input.first().json;\nconst aiResponse = aiData.choices[0].message.content;\n\n// Obtener datos anteriores\nconst preparedData = $('Prepare Prompt').first().json;\nconst sessionId = preparedData.sessionId;\n\n// Función para detectar temas y extraer fuentes\nfunction extractSources(response) {\n  const sources = [];\n  const lower = response.toLowerCase();\n  \n  // CRM\n  if (lower.includes('crm') || lower.includes('apollo') || \n      lower.includes('enriquecimiento') || lower.includes('contactos')) {\n    sources.push({\n      title: '🎯 Processia Core - CRM Inteligente',\n      url: 'https://processia.ai/crm'\n    });\n  }\n  \n  // Flow\n  if (lower.includes('flow') || lower.includes('consultoría') || \n      lower.includes('automatización') || lower.includes('implementación') ||\n      lower.includes('integración')) {\n    sources.push({\n      title: '⚙️ Processia Flow - Automatización',\n      url: 'https://processia.ai/flow'\n    });\n  }\n  \n  // Academy\n  if (lower.includes('academy') || lower.includes('curso') || \n      lower.includes('formación') || lower.includes('certificación') ||\n      lower.includes('aprender') || lower.includes('n8n')) {\n    sources.push({\n      title: '🎓 Processia Academy - Cursos',\n      url: 'https://processia.ai/academy'\n    });\n  }\n  \n  // Pricing\n  if (lower.includes('precio') || lower.includes('plan') || \n      lower.includes('gratis') || lower.includes('free') ||\n      lower.includes('$') || lower.includes('costo') ||\n      lower.includes('pro') || lower.includes('enterprise')) {\n    sources.push({\n      title: '💰 Planes y Precios',\n      url: 'https://processia.ai/pricing'\n    });\n  }\n  \n  // Eliminar duplicados\n  return [...new Map(sources.map(s => [s.url, s])).values()].slice(0, 3);\n}\n\nconst sources = extractSources(aiResponse);\n\nreturn {\n  json: {\n    response: aiResponse,\n    sources: sources,\n    sessionId: sessionId,\n    timestamp: new Date().toISOString(),\n    metadata: {\n      model: aiData.model,\n      tokensUsed: aiData.usage?.total_tokens || 0,\n      tokensPrompt: aiData.usage?.prompt_tokens || 0,\n      tokensCompletion: aiData.usage?.completion_tokens || 0\n    }\n  }\n};"
+      },
+      "id": "extract-sources",
+      "name": "Extract Sources",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              },
+              {
+                "name": "Access-Control-Allow-Methods",
+                "value": "POST, OPTIONS"
+              },
+              {
+                "name": "Access-Control-Allow-Headers",
+                "value": "Content-Type"
+              }
+            ]
+          }
+        }
+      },
+      "id": "respond",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Error handling\nconst sessionId = $('Prepare Prompt').first()?.json?.sessionId || 'error-session';\n\nreturn {\n  json: {\n    response: 'Lo siento, estoy teniendo problemas técnicos en este momento. 😔 Por favor, intenta de nuevo en unos segundos o contáctanos directamente.',\n    sources: [\n      {\n        title: '📧 Contacto Processia',\n        url: 'https://processia.ai/contact'\n      },\n      {\n        title: '❓ FAQs',\n        url: 'https://processia.ai/pricing#faq'\n      }\n    ],\n    sessionId: sessionId,\n    timestamp: new Date().toISOString(),\n    error: true\n  }\n};"
+      },
+      "id": "error-response",
+      "name": "Error Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        500
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Load Knowledge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Knowledge": {
+      "main": [
+        [
+          {
+            "node": "Prepare Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Prompt": {
+      "main": [
+        [
+          {
+            "node": "Call DeepSeek API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call DeepSeek API": {
+      "main": [
+        [
+          {
+            "node": "Extract Sources",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Sources": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Error Response": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "name": "chat",
+      "id": "chat-tag"
+    },
+    {
+      "name": "processia",
+      "id": "processia-tag"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2026-02-17T19:00:00.000Z",
+  "versionId": "1"
+}

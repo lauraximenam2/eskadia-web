@@ -1,9 +1,10 @@
 # 📊 RESUMEN DEL PROYECTO PROCESSIA
 
 **Fecha de actualización:** 16 de febrero de 2026
-**Estado:** Fase 3 completada - Sitio web completo ✅
+**Estado:** Proyecto completado y limpio ✅
 **Versión Next.js:** 14.2.15
 **Stack:** Next.js + TypeScript + Tailwind + Framer Motion
+**Último Commit:** 21010f8 (revert i18n)
 
 ---
 
@@ -33,10 +34,19 @@
 
 **✅ Páginas Creadas:**
 - ✅ Home Page (`/`) - Hero, social proof, features, stats, CTA
-- ✅ CRM Page (`/crm`) - Hero con video, 4 features, pricing, FAQ
+- ✅ CRM Page (`/crm`) - Hero con video YouTube, 4 features, pricing, FAQ
 - ✅ Academy Page (`/academy`) - Hero, 6 cursos, certificaciones, learning path
 - ✅ Pricing Page (`/pricing`) - Toggle Monthly/Annual, 3 planes, tabla comparativa, FAQ
-- ✅ About Page (`/about`) - Mission, 2 founders, 6 valores, timeline
+- ✅ About Page (`/about`) - Mission, 2 founders (Iván Gaitero + Laura Martínez), 6 valores, timeline
+
+### ⚠️ Cambios Posteriores: i18n Revertido
+
+**❌ next-intl removido (no necesario):**
+- Instalación de next-intl fue innecesaria para el proyecto
+- Se revirtieron todos los cambios relacionados
+- Navbar volvió a estado original en inglés
+- Archivos eliminados: i18n.ts, middleware.ts, LanguageSwitcher.tsx, messages/
+- Proyecto limpio sin dependencias de i18n
 
 ---
 
@@ -409,6 +419,21 @@ De los 15 efectos especificados en el brief original:
 **Error:** ESLint error con "don't" en texto
 **Solución:** Cambiado a `don&apos;t`
 **Estado:** ✅ Resuelto
+
+### 6. next-intl mal configurado
+**Error:** Instalación innecesaria de next-intl causando errores
+**Solución:** Removida completamente la dependencia y archivos relacionados
+**Estado:** ✅ Resuelto
+
+### 7. Import Video no usado
+**Error:** Import `Video` de lucide-react sin usar en crm/page.tsx
+**Solución:** Eliminado el import después de reemplazar placeholder con iframe
+**Estado:** ✅ Resuelto
+
+### 8. MagneticButton variables no usadas (recurrente)
+**Error:** Linter borra líneas que aplican el efecto magnético
+**Solución:** Restauradas múltiples veces las líneas `x.set()` y `y.set()`
+**Estado:** ✅ Resuelto (puede reaparecer si el linter las borra)
 
 ---
 

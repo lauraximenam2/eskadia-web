@@ -1,0 +1,158 @@
+{
+  "crm": [
+    {
+      "id": "crm-core",
+      "title": "Processia Core - CRM Inteligente",
+      "description": "CRM accionable enriquecido con datos de mercado y potenciado por agentes de IA. A diferencia de los CRM tradicionales que son almacenes de datos, Processia ejecuta el trabajo por ti.",
+      "features": [
+        "Integración nativa con n8n para automatización",
+        "Enriquecimiento automático con Apollo.io",
+        "Redacción y respuesta automática de correos con IA",
+        "Emisión inteligente de cotizaciones",
+        "Enriquecimiento automático de contactos"
+      ],
+      "pricing": {
+        "free": "Funcionalidades básicas sin límite de tiempo",
+        "pro": "$97 - $497/mes según funcionalidades",
+        "setup": "$1,500 - $5,000 implementación inicial"
+      },
+      "target": "Startups y PyMES de 10 a 200 empleados",
+      "url": "https://processia.ai/crm"
+    },
+    {
+      "id": "crm-features",
+      "title": "Características del CRM",
+      "description": "Funcionalidades clave que hacen de Processia un CRM único",
+      "points": [
+        "Product-Led Growth: Nivel gratuito para reducir barrera de entrada",
+        "IA Integrada: Redacción automática de emails y cotizaciones",
+        "Datos Enriquecidos: Conoce a tus clientes antes de contactarlos",
+        "Automatización Nativa: Flujos de trabajo sin código con n8n",
+        "Dark Mode Enterprise: Diseño profesional inspirado en Linear y Vercel"
+      ],
+      "url": "https://processia.ai/crm#features"
+    }
+  ],
+  "services": [
+    {
+      "id": "processia-flow",
+      "title": "Processia Flow - Automatización a Medida",
+      "description": "Consultora técnica especializada en automatización de procesos. Auditamos, diseñamos e implementamos flujos de trabajo complejos que conectan tu CRM con toda tu empresa.",
+      "offerings": [
+        "Auditoría de procesos actuales",
+        "Diseño de flujos de automatización",
+        "Implementación con n8n",
+        "Integración con sistemas existentes",
+        "Capacitación del equipo"
+      ],
+      "pricing": {
+        "project": "$3,000 - $15,000 por proyecto",
+        "retainer": "$500 - $2,500/mes mantenimiento"
+      },
+      "ideal_for": "Empresas que necesitan más que el estándar, con procesos complejos o requisitos específicos",
+      "url": "https://processia.ai/flow"
+    }
+  ],
+  "academy": [
+    {
+      "id": "processia-academy",
+      "title": "Processia Academy - Formación y Comunidad",
+      "description": "Plataforma de formación sobre n8n, IA y gestión de procesos. Cursos grabados, workshops en vivo y certificaciones profesionales.",
+      "courses": [
+        {
+          "name": "Introducción a n8n",
+          "level": "Principiante",
+          "duration": "8 horas",
+          "price": "Gratis"
+        },
+        {
+          "name": "Automatización con IA",
+          "level": "Intermedio",
+          "duration": "15 horas",
+          "price": "$497"
+        },
+        {
+          "name": "Certificación Processia Flow Expert",
+          "level": "Avanzado",
+          "duration": "40 horas",
+          "price": "$2,997"
+        }
+      ],
+      "b2b_training": {
+        "bootcamps": "$997 - $5,000 por empresa",
+        "workshops": "Talleres personalizados para equipos"
+      },
+      "url": "https://processia.ai/academy"
+    }
+  ],
+  "pricing": [
+    {
+      "id": "pricing-tiers",
+      "title": "Planes y Precios de Processia",
+      "description": "Modelo freemium diseñado para flujo de caja inmediato y estabilidad a largo plazo",
+      "tiers": [
+        {
+          "name": "Free",
+          "price": "$0/mes",
+          "description": "Perfecto para empezar y explorar Processia",
+          "features": [
+            "CRM básico con gestión de contactos",
+            "5 créditos de enriquecimiento Apollo.io",
+            "Automatizaciones básicas con n8n",
+            "1 usuario",
+            "Soporte comunidad"
+          ]
+        },
+        {
+          "name": "Pro",
+          "price": "$97 - $497/mes",
+          "description": "Para equipos que necesitan IA y automatización avanzada",
+          "features": [
+            "Todo de Free",
+            "Enriquecimiento ilimitado Apollo.io",
+            "IA para emails y cotizaciones",
+            "Automatizaciones avanzadas",
+            "Hasta 10 usuarios",
+            "Soporte prioritario"
+          ]
+        },
+        {
+          "name": "Enterprise",
+          "price": "Personalizado",
+          "description": "Soluciones a medida para empresas grandes",
+          "features": [
+            "Todo de Pro",
+            "Setup fee: $1,500 - $5,000",
+            "Implementación personalizada",
+            "Usuarios ilimitados",
+            "Soporte dedicado",
+            "SLA garantizado"
+          ]
+        }
+      ],
+      "url": "https://processia.ai/pricing"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "¿Qué hace diferente a Processia de otros CRM?",
+      "answer": "Processia no es solo un almacén de datos. Es un CRM accionable que combina enriquecimiento de datos con Apollo.io y automatización nativa con n8n. Nuestros agentes de IA ejecutan tareas por ti: redactan emails, generan cotizaciones y enriquecen contactos automáticamente."
+    },
+    {
+      "question": "¿Qué es el modelo Product-Led Growth?",
+      "answer": "Ofrecemos un nivel gratuito completo sin límite de tiempo. Puedes empezar a usar Processia hoy mismo sin tarjeta de crédito. Actualizas a Pro solo cuando necesites funcionalidades avanzadas de IA y automatización masiva."
+    },
+    {
+      "question": "¿Necesito conocimientos técnicos para usar Processia?",
+      "answer": "No para el CRM básico. Sin embargo, para sacar el máximo provecho de las automatizaciones, ofrecemos cursos gratuitos en Processia Academy. Para implementaciones complejas, nuestro equipo de Processia Flow te ayuda."
+    },
+    {
+      "question": "¿Qué incluye el Setup Fee de $1,500 - $5,000?",
+      "answer": "Implementación completa del CRM, migración de datos desde tu sistema actual, configuración de automatizaciones personalizadas, integración con tus herramientas existentes y capacitación de tu equipo."
+    },
+    {
+      "question": "¿Processia Flow es obligatorio?",
+      "answer": "No. Processia Flow es nuestro servicio de consultoría para empresas que necesitan automatizaciones a medida o integraciones complejas. El CRM funciona perfectamente sin estos servicios adicionales."
+    }
+  ]
+}
