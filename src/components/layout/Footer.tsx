@@ -1,51 +1,52 @@
 import Link from "next/link";
-import { GradientText } from "@/components/effects";
+import Image from "next/image";
 import { Github, Twitter, Linkedin, Mail } from "lucide-react";
 
 const footerLinks = {
   products: {
-    title: "Products",
+    title: "Productos",
     links: [
-      { label: "Processia CRM", href: "/crm" },
-      { label: "Processia Academy", href: "/academy" },
-      { label: "Integrations", href: "/integrations" },
-      { label: "API", href: "/api" },
+      { label: "Eskadia CRM", href: "/crm" },
+      { label: "Eskadia Automatización", href: "/automatizacion" },
+      { label: "Eskadia AI", href: "/ai" },
+      { label: "Eskadia Consultoría", href: "/consultoria" },
+      { label: "Eskadia Academy", href: "/academy" },
     ],
   },
   company: {
-    title: "Company",
+    title: "Empresa",
     links: [
-      { label: "About", href: "/about" },
-      { label: "Pricing", href: "/pricing" },
+      { label: "Nosotros", href: "/about" },
+      { label: "Precios", href: "/pricing" },
       { label: "Blog", href: "/blog" },
-      { label: "Careers", href: "/careers" },
+      { label: "Contacto", href: "/contact" },
     ],
   },
   resources: {
-    title: "Resources",
+    title: "Recursos",
     links: [
-      { label: "Documentation", href: "/docs" },
-      { label: "Support", href: "/support" },
-      { label: "Community", href: "/community" },
-      { label: "Status", href: "/status" },
+      { label: "Documentación", href: "/docs" },
+      { label: "Soporte", href: "/support" },
+      { label: "Comunidad", href: "/community" },
+      { label: "Estado del servicio", href: "/status" },
     ],
   },
   legal: {
     title: "Legal",
     links: [
-      { label: "Privacy Policy", href: "/privacy" },
-      { label: "Terms of Service", href: "/terms" },
-      { label: "Cookie Policy", href: "/cookies" },
+      { label: "Política de privacidad", href: "/privacy" },
+      { label: "Términos de servicio", href: "/terms" },
+      { label: "Política de cookies", href: "/cookies" },
       { label: "GDPR", href: "/gdpr" },
     ],
   },
 };
 
 const socialLinks = [
-  { icon: Twitter, href: "https://twitter.com/processia", label: "Twitter" },
-  { icon: Github, href: "https://github.com/processia", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com/company/processia", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:hello@processia.com", label: "Email" },
+  { icon: Twitter, href: "https://twitter.com/eskadia_ai", label: "Twitter" },
+  { icon: Github, href: "https://github.com/eskadia", label: "GitHub" },
+  { icon: Linkedin, href: "https://linkedin.com/company/eskadia-ai", label: "LinkedIn" },
+  { icon: Mail, href: "mailto:hola@eskadia.ai", label: "Email" },
 ];
 
 export function Footer() {
@@ -135,11 +136,15 @@ export function Footer() {
         <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
           {/* Logo + Copyright */}
           <div className="flex items-center space-x-4">
-            <GradientText className="text-xl font-bold">
-              Processia
-            </GradientText>
+            <Image
+              src="/logos/eskadia-logo-light.png"
+              alt="Eskadia"
+              width={120}
+              height={32}
+              className="h-7 w-auto"
+            />
             <span className="text-muted-foreground text-sm">
-              © {new Date().getFullYear()} Processia. All rights reserved.
+              © {new Date().getFullYear()} Eskadia. Todos los derechos reservados.
             </span>
           </div>
 

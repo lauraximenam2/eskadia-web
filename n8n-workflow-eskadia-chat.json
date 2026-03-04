@@ -1,0 +1,225 @@
+{
+  "name": "Eskadia AI Chat Assistant",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "eskadia-chat",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        300
+      ],
+      "webhookId": "eskadia-chat"
+    },
+    {
+      "parameters": {
+        "url": "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/public/data/eskadia-content.json",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "load-knowledge-base",
+      "name": "Load Knowledge Base",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        460,
+        300
+      ],
+      "notes": "Carga el contenido de Eskadia desde GitHub o tu servidor. Cambia la URL a donde esté hosteado tu JSON."
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extraer datos del webhook\nconst message = $input.first().json.body.message;\nconst sessionId = $input.first().json.body.sessionId || 'new-session';\nconst timestamp = $input.first().json.body.timestamp;\n\n// Obtener el knowledge base del nodo anterior\nconst knowledgeBase = $('Load Knowledge Base').first().json;\n\n// Construir contexto para DeepSeek\nconst context = `\nEres un asistente inteligente de Eskadia.ai, una plataforma de automatización empresarial.\n\nINFORMACIÓN DE ESKADIA:\n\n## CRM - Eskadia Core\n${JSON.stringify(knowledgeBase.crm, null, 2)}\n\n## Servicios - Eskadia Flow\n${JSON.stringify(knowledgeBase.services, null, 2)}\n\n## Academia - Eskadia Academy\n${JSON.stringify(knowledgeBase.academy, null, 2)}\n\n## Precios\n${JSON.stringify(knowledgeBase.pricing, null, 2)}\n\n## FAQs\n${JSON.stringify(knowledgeBase.faqs, null, 2)}\n\nINSTRUCCIONES:\n1. Responde en español de forma amigable y profesional\n2. Usa emojis ocasionalmente para hacer la conversación más cálida\n3. Si la pregunta está relacionada con la información anterior, úsala para responder\n4. Si mencionas características específicas, cita las fuentes relevantes\n5. Mantén las respuestas concisas pero informativas (máximo 200 palabras)\n6. Si no sabes algo, sé honesto y sugiere contactar al equipo\n7. Enfatiza los beneficios únicos: IA integrada, automatización nativa, modelo freemium\n`;\n\nreturn {\n  json: {\n    message,\n    sessionId,\n    timestamp,\n    context,\n    knowledgeBase\n  }\n};"
+      },
+      "id": "prepare-context",
+      "name": "Prepare Context",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        680,
+        300
+      ],
+      "notes": "Prepara el contexto y el mensaje para DeepSeek"
+    },
+    {
+      "parameters": {
+        "model": "deepseek-chat",
+        "messages": {
+          "messageValues": [
+            {
+              "role": "system",
+              "message": "={{ $json.context }}"
+            },
+            {
+              "role": "user",
+              "message": "={{ $json.message }}"
+            }
+          ]
+        },
+        "options": {
+          "temperature": 0.7,
+          "maxTokens": 500
+        }
+      },
+      "id": "deepseek-chat",
+      "name": "DeepSeek Chat",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        900,
+        300
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "deepseek-credentials",
+          "name": "DeepSeek API"
+        }
+      },
+      "notes": "Configura tus credenciales de DeepSeek en n8n. Base URL: https://api.deepseek.com"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener la respuesta de DeepSeek\nconst aiResponse = $input.first().json.message?.content || $input.first().json.choices?.[0]?.message?.content || 'Lo siento, no pude generar una respuesta.';\n\n// Obtener el knowledge base\nconst knowledgeBase = $('Prepare Context').first().json.knowledgeBase;\nconst sessionId = $('Prepare Context').first().json.sessionId;\n\n// Función para detectar menciones de temas y extraer fuentes\nfunction extractSources(response, kb) {\n  const sources = [];\n  const responseLower = response.toLowerCase();\n  \n  // Detectar menciones del CRM\n  if (responseLower.includes('crm') || responseLower.includes('eskadia core') || \n      responseLower.includes('apollo') || responseLower.includes('enriquecimiento')) {\n    sources.push({\n      title: 'Eskadia Core - CRM Inteligente',\n      url: 'https://eskadia.ai/crm'\n    });\n  }\n  \n  // Detectar menciones de Flow\n  if (responseLower.includes('flow') || responseLower.includes('consultoría') || \n      responseLower.includes('automatización a medida') || responseLower.includes('implementación')) {\n    sources.push({\n      title: 'Eskadia Flow - Automatización a Medida',\n      url: 'https://eskadia.ai/flow'\n    });\n  }\n  \n  // Detectar menciones de Academy\n  if (responseLower.includes('academy') || responseLower.includes('cursos') || \n      responseLower.includes('formación') || responseLower.includes('certificación') ||\n      responseLower.includes('aprender')) {\n    sources.push({\n      title: 'Eskadia Academy - Cursos y Certificaciones',\n      url: 'https://eskadia.ai/academy'\n    });\n  }\n  \n  // Detectar menciones de precios\n  if (responseLower.includes('precio') || responseLower.includes('plan') || \n      responseLower.includes('$') || responseLower.includes('gratis') ||\n      responseLower.includes('free') || responseLower.includes('pro') ||\n      responseLower.includes('enterprise')) {\n    sources.push({\n      title: 'Planes y Precios de Eskadia',\n      url: 'https://eskadia.ai/pricing'\n    });\n  }\n  \n  // Detectar menciones de características específicas\n  if (responseLower.includes('n8n')) {\n    sources.push({\n      title: 'Integración con n8n',\n      url: 'https://eskadia.ai/crm#features'\n    });\n  }\n  \n  // Eliminar duplicados\n  const uniqueSources = sources.filter((source, index, self) =>\n    index === self.findIndex((s) => s.url === source.url)\n  );\n  \n  return uniqueSources;\n}\n\n// Extraer fuentes relevantes\nconst sources = extractSources(aiResponse, knowledgeBase);\n\n// Construir respuesta final\nreturn {\n  json: {\n    response: aiResponse,\n    sources: sources.slice(0, 3), // Máximo 3 fuentes\n    sessionId: sessionId,\n    timestamp: new Date().toISOString(),\n    metadata: {\n      model: 'deepseek-chat',\n      tokensUsed: $input.first().json.usage?.total_tokens || 0\n    }\n  }\n};"
+      },
+      "id": "process-response",
+      "name": "Process Response & Extract Sources",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        300
+      ],
+      "notes": "Procesa la respuesta de DeepSeek y extrae fuentes relevantes basadas en el contenido"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              }
+            ]
+          }
+        }
+      },
+      "id": "respond-to-webhook",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        300
+      ],
+      "notes": "Devuelve la respuesta al chat widget"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Manejo de errores\nconst error = $input.first().json.error || 'Error desconocido';\n\nreturn {\n  json: {\n    response: 'Lo siento, hubo un problema al procesar tu mensaje. Por favor, intenta de nuevo o contacta con nuestro equipo de soporte.',\n    sources: [\n      {\n        title: 'Contacto Eskadia',\n        url: 'https://eskadia.ai/contact'\n      }\n    ],\n    sessionId: $('Prepare Context').first()?.json?.sessionId || 'error-session',\n    error: true,\n    errorDetails: error\n  }\n};"
+      },
+      "id": "error-handler",
+      "name": "Error Handler",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        500
+      ],
+      "notes": "Maneja errores y devuelve una respuesta amigable"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Load Knowledge Base",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Knowledge Base": {
+      "main": [
+        [
+          {
+            "node": "Prepare Context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Context": {
+      "main": [
+        [
+          {
+            "node": "DeepSeek Chat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeepSeek Chat": {
+      "main": [
+        [
+          {
+            "node": "Process Response & Extract Sources",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Response & Extract Sources": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Error Handler": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": ""
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2026-02-17T19:00:00.000Z",
+  "versionId": "1"
+}

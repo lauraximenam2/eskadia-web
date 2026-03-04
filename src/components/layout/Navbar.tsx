@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronDown, Menu, X } from "lucide-react";
-import { GradientText, MagneticButton, ShimmerButton } from "@/components/effects";
+import { MagneticButton, ShimmerButton } from "@/components/effects";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 
 export function Navbar() {
@@ -30,10 +31,15 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <GradientText className="text-2xl font-bold">
-              Processia
-            </GradientText>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logos/eskadia-logo-light.png"
+              alt="Eskadia"
+              width={140}
+              height={36}
+              className="h-8 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -42,14 +48,14 @@ export function Navbar() {
             <DropdownMenu.Root>
               <DropdownMenu.Trigger asChild>
                 <button className="flex items-center space-x-1 text-foreground hover:text-primary transition-colors">
-                  <span>Products</span>
+                  <span>Productos</span>
                   <ChevronDown className="w-4 h-4" />
                 </button>
               </DropdownMenu.Trigger>
 
               <DropdownMenu.Portal>
                 <DropdownMenu.Content
-                  className="min-w-[220px] bg-card/95 backdrop-blur-xl border border-border rounded-lg p-2 shadow-xl"
+                  className="min-w-[260px] bg-card/95 backdrop-blur-xl border border-border rounded-lg p-2 shadow-xl"
                   sideOffset={5}
                 >
                   <DropdownMenu.Item asChild>
@@ -58,10 +64,52 @@ export function Navbar() {
                       className="flex flex-col px-4 py-3 rounded-md hover:bg-card-hover transition-colors cursor-pointer outline-none"
                     >
                       <span className="font-semibold text-foreground">
-                        Processia CRM
+                        Eskadia CRM
                       </span>
                       <span className="text-sm text-muted-foreground">
-                        Customer relationship management
+                        CRM inteligente con IA integrada
+                      </span>
+                    </Link>
+                  </DropdownMenu.Item>
+
+                  <DropdownMenu.Item asChild>
+                    <Link
+                      href="/automatizacion"
+                      className="flex flex-col px-4 py-3 rounded-md hover:bg-card-hover transition-colors cursor-pointer outline-none"
+                    >
+                      <span className="font-semibold text-foreground">
+                        Eskadia Automatización
+                      </span>
+                      <span className="text-sm text-muted-foreground">
+                        Flujos de trabajo sin código
+                      </span>
+                    </Link>
+                  </DropdownMenu.Item>
+
+                  <DropdownMenu.Item asChild>
+                    <Link
+                      href="/ai"
+                      className="flex flex-col px-4 py-3 rounded-md hover:bg-card-hover transition-colors cursor-pointer outline-none"
+                    >
+                      <span className="font-semibold text-foreground">
+                        Eskadia AI
+                      </span>
+                      <span className="text-sm text-muted-foreground">
+                        Inteligencia artificial aplicada
+                      </span>
+                    </Link>
+                  </DropdownMenu.Item>
+
+                  <DropdownMenu.Item asChild>
+                    <Link
+                      href="/consultoria"
+                      className="flex flex-col px-4 py-3 rounded-md hover:bg-card-hover transition-colors cursor-pointer outline-none"
+                    >
+                      <span className="font-semibold text-foreground">
+                        Eskadia Consultoría
+                      </span>
+                      <span className="text-sm text-muted-foreground">
+                        Auditoría e implementación de procesos
                       </span>
                     </Link>
                   </DropdownMenu.Item>
@@ -72,10 +120,10 @@ export function Navbar() {
                       className="flex flex-col px-4 py-3 rounded-md hover:bg-card-hover transition-colors cursor-pointer outline-none"
                     >
                       <span className="font-semibold text-foreground">
-                        Processia Academy
+                        Eskadia Academy
                       </span>
                       <span className="text-sm text-muted-foreground">
-                        Learn business automation
+                        Formación en automatización y n8n
                       </span>
                     </Link>
                   </DropdownMenu.Item>
@@ -87,14 +135,14 @@ export function Navbar() {
               href="/pricing"
               className="text-foreground hover:text-primary transition-colors"
             >
-              Pricing
+              Precios
             </Link>
 
             <Link
               href="/about"
               className="text-foreground hover:text-primary transition-colors"
             >
-              About
+              Nosotros
             </Link>
           </div>
 
@@ -105,7 +153,7 @@ export function Navbar() {
                 href="/login"
                 className="px-4 py-2 text-foreground hover:text-primary transition-colors"
               >
-                Login
+                Iniciar sesión
               </Link>
             </MagneticButton>
 
@@ -114,7 +162,7 @@ export function Navbar() {
                 href="/get-started"
                 className="px-6 py-2 bg-primary hover:bg-primary-hover text-white rounded-lg font-semibold transition-colors"
               >
-                Get Started
+                Empezar gratis
               </Link>
             </ShimmerButton>
           </div>
@@ -138,21 +186,42 @@ export function Navbar() {
           <div className="md:hidden pb-6 pt-2 space-y-4 border-t border-border mt-2">
             <div className="space-y-2">
               <p className="text-sm font-semibold text-muted-foreground px-4">
-                Products
+                Productos
               </p>
               <Link
                 href="/crm"
                 className="block px-4 py-2 text-foreground hover:bg-card-hover rounded-lg transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Processia CRM
+                Eskadia CRM
+              </Link>
+              <Link
+                href="/automatizacion"
+                className="block px-4 py-2 text-foreground hover:bg-card-hover rounded-lg transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Eskadia Automatización
+              </Link>
+              <Link
+                href="/ai"
+                className="block px-4 py-2 text-foreground hover:bg-card-hover rounded-lg transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Eskadia AI
+              </Link>
+              <Link
+                href="/consultoria"
+                className="block px-4 py-2 text-foreground hover:bg-card-hover rounded-lg transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Eskadia Consultoría
               </Link>
               <Link
                 href="/academy"
                 className="block px-4 py-2 text-foreground hover:bg-card-hover rounded-lg transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Processia Academy
+                Eskadia Academy
               </Link>
             </div>
 
@@ -161,7 +230,7 @@ export function Navbar() {
               className="block px-4 py-2 text-foreground hover:bg-card-hover rounded-lg transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Pricing
+              Precios
             </Link>
 
             <Link
@@ -169,7 +238,7 @@ export function Navbar() {
               className="block px-4 py-2 text-foreground hover:bg-card-hover rounded-lg transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              About
+              Nosotros
             </Link>
 
             <div className="flex flex-col space-y-2 px-4 pt-4">
@@ -178,14 +247,14 @@ export function Navbar() {
                 className="px-4 py-2 text-center border border-border rounded-lg hover:bg-card-hover transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Login
+                Iniciar sesión
               </Link>
               <Link
                 href="/get-started"
                 className="px-4 py-2 text-center bg-primary hover:bg-primary-hover text-white rounded-lg font-semibold transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Get Started
+                Empezar gratis
               </Link>
             </div>
           </div>

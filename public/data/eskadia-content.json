@@ -2,8 +2,8 @@
   "crm": [
     {
       "id": "crm-core",
-      "title": "Processia Core - CRM Inteligente",
-      "description": "CRM accionable enriquecido con datos de mercado y potenciado por agentes de IA. A diferencia de los CRM tradicionales que son almacenes de datos, Processia ejecuta el trabajo por ti.",
+      "title": "Eskadia Core - CRM Inteligente",
+      "description": "CRM accionable enriquecido con datos de mercado y potenciado por agentes de IA. A diferencia de los CRM tradicionales que son almacenes de datos, Eskadia ejecuta el trabajo por ti.",
       "features": [
         "Integración nativa con n8n para automatización",
         "Enriquecimiento automático con Apollo.io",
@@ -17,12 +17,12 @@
         "setup": "$1,500 - $5,000 implementación inicial"
       },
       "target": "Startups y PyMES de 10 a 200 empleados",
-      "url": "https://processia.ai/crm"
+      "url": "https://eskadia.ai/crm"
     },
     {
       "id": "crm-features",
       "title": "Características del CRM",
-      "description": "Funcionalidades clave que hacen de Processia un CRM único",
+      "description": "Funcionalidades clave que hacen de Eskadia un CRM único",
       "points": [
         "Product-Led Growth: Nivel gratuito para reducir barrera de entrada",
         "IA Integrada: Redacción automática de emails y cotizaciones",
@@ -30,13 +30,13 @@
         "Automatización Nativa: Flujos de trabajo sin código con n8n",
         "Dark Mode Enterprise: Diseño profesional inspirado en Linear y Vercel"
       ],
-      "url": "https://processia.ai/crm#features"
+      "url": "https://eskadia.ai/crm#features"
     }
   ],
   "services": [
     {
-      "id": "processia-flow",
-      "title": "Processia Flow - Automatización a Medida",
+      "id": "eskadia-flow",
+      "title": "Eskadia Flow - Automatización a Medida",
       "description": "Consultora técnica especializada en automatización de procesos. Auditamos, diseñamos e implementamos flujos de trabajo complejos que conectan tu CRM con toda tu empresa.",
       "offerings": [
         "Auditoría de procesos actuales",
@@ -50,13 +50,13 @@
         "retainer": "$500 - $2,500/mes mantenimiento"
       },
       "ideal_for": "Empresas que necesitan más que el estándar, con procesos complejos o requisitos específicos",
-      "url": "https://processia.ai/flow"
+      "url": "https://eskadia.ai/flow"
     }
   ],
   "academy": [
     {
-      "id": "processia-academy",
-      "title": "Processia Academy - Formación y Comunidad",
+      "id": "eskadia-academy",
+      "title": "Eskadia Academy - Formación y Comunidad",
       "description": "Plataforma de formación sobre n8n, IA y gestión de procesos. Cursos grabados, workshops en vivo y certificaciones profesionales.",
       "courses": [
         {
@@ -72,7 +72,7 @@
           "price": "$497"
         },
         {
-          "name": "Certificación Processia Flow Expert",
+          "name": "Certificación Eskadia Flow Expert",
           "level": "Avanzado",
           "duration": "40 horas",
           "price": "$2,997"
@@ -82,19 +82,19 @@
         "bootcamps": "$997 - $5,000 por empresa",
         "workshops": "Talleres personalizados para equipos"
       },
-      "url": "https://processia.ai/academy"
+      "url": "https://eskadia.ai/academy"
     }
   ],
   "pricing": [
     {
       "id": "pricing-tiers",
-      "title": "Planes y Precios de Processia",
+      "title": "Planes y Precios de Eskadia",
       "description": "Modelo freemium diseñado para flujo de caja inmediato y estabilidad a largo plazo",
       "tiers": [
         {
           "name": "Free",
           "price": "$0/mes",
-          "description": "Perfecto para empezar y explorar Processia",
+          "description": "Perfecto para empezar y explorar Eskadia",
           "features": [
             "CRM básico con gestión de contactos",
             "5 créditos de enriquecimiento Apollo.io",
@@ -130,29 +130,29 @@
           ]
         }
       ],
-      "url": "https://processia.ai/pricing"
+      "url": "https://eskadia.ai/pricing"
     }
   ],
   "faqs": [
     {
-      "question": "¿Qué hace diferente a Processia de otros CRM?",
-      "answer": "Processia no es solo un almacén de datos. Es un CRM accionable que combina enriquecimiento de datos con Apollo.io y automatización nativa con n8n. Nuestros agentes de IA ejecutan tareas por ti: redactan emails, generan cotizaciones y enriquecen contactos automáticamente."
+      "question": "¿Qué hace diferente a Eskadia de otros CRM?",
+      "answer": "Eskadia no es solo un almacén de datos. Es un CRM accionable que combina enriquecimiento de datos con Apollo.io y automatización nativa con n8n. Nuestros agentes de IA ejecutan tareas por ti: redactan emails, generan cotizaciones y enriquecen contactos automáticamente."
     },
     {
       "question": "¿Qué es el modelo Product-Led Growth?",
-      "answer": "Ofrecemos un nivel gratuito completo sin límite de tiempo. Puedes empezar a usar Processia hoy mismo sin tarjeta de crédito. Actualizas a Pro solo cuando necesites funcionalidades avanzadas de IA y automatización masiva."
+      "answer": "Ofrecemos un nivel gratuito completo sin límite de tiempo. Puedes empezar a usar Eskadia hoy mismo sin tarjeta de crédito. Actualizas a Pro solo cuando necesites funcionalidades avanzadas de IA y automatización masiva."
     },
     {
-      "question": "¿Necesito conocimientos técnicos para usar Processia?",
-      "answer": "No para el CRM básico. Sin embargo, para sacar el máximo provecho de las automatizaciones, ofrecemos cursos gratuitos en Processia Academy. Para implementaciones complejas, nuestro equipo de Processia Flow te ayuda."
+      "question": "¿Necesito conocimientos técnicos para usar Eskadia?",
+      "answer": "No para el CRM básico. Sin embargo, para sacar el máximo provecho de las automatizaciones, ofrecemos cursos gratuitos en Eskadia Academy. Para implementaciones complejas, nuestro equipo de Eskadia Flow te ayuda."
     },
     {
       "question": "¿Qué incluye el Setup Fee de $1,500 - $5,000?",
       "answer": "Implementación completa del CRM, migración de datos desde tu sistema actual, configuración de automatizaciones personalizadas, integración con tus herramientas existentes y capacitación de tu equipo."
     },
     {
-      "question": "¿Processia Flow es obligatorio?",
-      "answer": "No. Processia Flow es nuestro servicio de consultoría para empresas que necesitan automatizaciones a medida o integraciones complejas. El CRM funciona perfectamente sin estos servicios adicionales."
+      "question": "¿Eskadia Flow es obligatorio?",
+      "answer": "No. Eskadia Flow es nuestro servicio de consultoría para empresas que necesitan automatizaciones a medida o integraciones complejas. El CRM funciona perfectamente sin estos servicios adicionales."
     }
   ]
 }

@@ -1,6 +1,6 @@
-# Processia - Intelligent Automation Platform
+# Eskadia - Intelligent Automation Platform
 
-Website oficial de Processia construido con Next.js 14, TypeScript, Tailwind CSS y Framer Motion.
+Website oficial de Eskadia construido con Next.js 14, TypeScript, Tailwind CSS y Framer Motion.
 
 ## 🚀 Stack Tecnológico
 
@@ -36,7 +36,7 @@ npm run dev
 ## 🏗️ Estructura del Proyecto
 
 ```
-processia-web/
+eskadia-web/
 ├── src/
 │   ├── app/                  # Páginas y rutas (App Router)
 │   ├── components/
@@ -80,4 +80,4 @@ processia-web/
 
 ## 📄 Licencia
 
-© 2025 Processia. Todos los derechos reservados.
+© 2025 Eskadia. Todos los derechos reservados.

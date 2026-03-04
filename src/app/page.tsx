@@ -7,17 +7,18 @@ import {
   NumberCounter,
 } from "@/components/effects";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function HomePage() {
   const logos = [
-    "Acme Corp",
-    "TechStart",
-    "InnovateLabs",
-    "DataFlow",
-    "CloudSync",
-    "AI Systems",
-    "DevOps Pro",
-    "SecureNet",
+    "Apollo.io",
+    "n8n",
+    "DeepSeek",
+    "Vercel",
+    "Stripe",
+    "HubSpot",
+    "Slack",
+    "Notion",
   ];
 
   return (
@@ -25,13 +26,24 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative max-w-7xl mx-auto px-4 py-32">
         <div className="text-center space-y-8">
+          <div className="flex justify-center mb-4">
+            <Image
+              src="/logos/eskadia-logo-light.png"
+              alt="Eskadia"
+              width={280}
+              height={72}
+              className="h-16 w-auto"
+              priority
+            />
+          </div>
+
           <GradientText as="h1" className="text-6xl font-bold" animated={true}>
-            Welcome to Processia
+            AI-liados de tu progreso
           </GradientText>
 
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Build processes that scale. Not teams that don&apos;t. Experience
-            AI-powered automation with stunning design.
+            Automatizaci&oacute;n inteligente, CRM con IA y consultor&iacute;a
+            para empresas que quieren escalar sin l&iacute;mites.
           </p>
 
           <div className="flex items-center justify-center gap-4">
@@ -40,7 +52,7 @@ export default function HomePage() {
                 href="/about"
                 className="px-8 py-3 bg-card border border-border rounded-lg hover:bg-card-hover transition-colors inline-block"
               >
-                Learn More
+                Conocer m&aacute;s
               </Link>
             </MagneticButton>
 
@@ -49,7 +61,7 @@ export default function HomePage() {
                 href="/get-started"
                 className="px-8 py-3 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors inline-block"
               >
-                Get Started
+                Empezar gratis
               </Link>
             </ShimmerButton>
           </div>
@@ -59,7 +71,7 @@ export default function HomePage() {
       {/* Social Proof - Infinite Scroll */}
       <section className="py-16 border-y border-border">
         <p className="text-center text-sm text-muted-foreground mb-8">
-          Trusted by leading companies
+          Integraciones con las herramientas que ya usas
         </p>
         <InfiniteScroll speed={30} pauseOnHover={true}>
           {logos.map((logo, i) => (
@@ -76,30 +88,30 @@ export default function HomePage() {
       {/* Features Grid */}
       <section className="max-w-7xl mx-auto px-4 py-32">
         <h2 className="text-4xl font-bold text-center mb-4">
-          <GradientText animated={false}>Powerful Features</GradientText>
+          <GradientText animated={false}>Soluciones Inteligentes</GradientText>
         </h2>
         <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
-          Everything you need to automate your business processes and scale
-          efficiently.
+          Todo lo que necesitas para automatizar, gestionar y escalar tu negocio
+          con inteligencia artificial.
         </p>
 
         <div className="grid md:grid-cols-3 gap-8">
           <GlassCard hover={true} glow={true}>
             <div className="p-6">
-              <h3 className="text-xl font-semibold mb-2">AI-Powered CRM</h3>
+              <h3 className="text-xl font-semibold mb-2">Eskadia CRM</h3>
               <p className="text-muted-foreground">
-                Intelligent customer relationship management with predictive
-                analytics and automation.
+                CRM accionable con IA integrada. Enriquecimiento autom&aacute;tico
+                de datos, redacci&oacute;n inteligente y automatizaci&oacute;n nativa.
               </p>
             </div>
           </GlassCard>
 
           <GlassCard hover={true} animatedBorder={true}>
             <div className="p-6">
-              <h3 className="text-xl font-semibold mb-2">Process Academy</h3>
+              <h3 className="text-xl font-semibold mb-2">Eskadia Academy</h3>
               <p className="text-muted-foreground">
-                Learn business automation with expert-led courses and hands-on
-                projects.
+                Aprende automatizaci&oacute;n empresarial con cursos pr&aacute;cticos,
+                certificaciones y bootcamps sobre n8n, IA y m&aacute;s.
               </p>
             </div>
           </GlassCard>
@@ -107,11 +119,41 @@ export default function HomePage() {
           <GlassCard hover={true} glow={true} animatedBorder={true}>
             <div className="p-6">
               <h3 className="text-xl font-semibold mb-2">
-                Workflow Automation
+                Eskadia Automatizaci&oacute;n
               </h3>
               <p className="text-muted-foreground">
-                Build complex workflows visually with our intuitive drag-and-drop
-                interface.
+                Dise&ntilde;a flujos de trabajo complejos visualmente.
+                Integraciones sin c&oacute;digo con las herramientas que ya usas.
+              </p>
+            </div>
+          </GlassCard>
+
+          <GlassCard hover={true} animatedBorder={true}>
+            <div className="p-6">
+              <h3 className="text-xl font-semibold mb-2">Eskadia AI</h3>
+              <p className="text-muted-foreground">
+                Inteligencia artificial aplicada a tus procesos. An&aacute;lisis
+                predictivo, asistentes virtuales y toma de decisiones inteligente.
+              </p>
+            </div>
+          </GlassCard>
+
+          <GlassCard hover={true} glow={true}>
+            <div className="p-6">
+              <h3 className="text-xl font-semibold mb-2">Eskadia Consultor&iacute;a</h3>
+              <p className="text-muted-foreground">
+                Auditor&iacute;a e implementaci&oacute;n de procesos. Consultor&iacute;a
+                t&eacute;cnica para transformar tu operaci&oacute;n con tecnolog&iacute;a.
+              </p>
+            </div>
+          </GlassCard>
+
+          <GlassCard hover={true} glow={true} animatedBorder={true}>
+            <div className="p-6">
+              <h3 className="text-xl font-semibold mb-2">Eskadia Formaci&oacute;n</h3>
+              <p className="text-muted-foreground">
+                Capacitaci&oacute;n empresarial en automatizaci&oacute;n y herramientas
+                digitales. Programas B2B personalizados para tu equipo.
               </p>
             </div>
           </GlassCard>
@@ -129,7 +171,7 @@ export default function HomePage() {
               suffix="%"
               className="text-5xl font-bold text-primary mb-2"
             />
-            <p className="text-muted-foreground">Uptime Guarantee</p>
+            <p className="text-muted-foreground">Disponibilidad garantizada</p>
           </div>
 
           <div>
@@ -139,7 +181,7 @@ export default function HomePage() {
               suffix="+"
               className="text-5xl font-bold text-primary mb-2"
             />
-            <p className="text-muted-foreground">Active Users</p>
+            <p className="text-muted-foreground">Procesos automatizados</p>
           </div>
 
           <div>
@@ -149,7 +191,7 @@ export default function HomePage() {
               suffix="/7"
               className="text-5xl font-bold text-primary mb-2"
             />
-            <p className="text-muted-foreground">Support Available</p>
+            <p className="text-muted-foreground">Soporte disponible</p>
           </div>
         </div>
       </section>
@@ -159,18 +201,18 @@ export default function HomePage() {
         <GlassCard glow={true} animatedBorder={true}>
           <div className="p-16">
             <h2 className="text-4xl font-bold mb-4">
-              <GradientText>Ready to Get Started?</GradientText>
+              <GradientText>&iquest;Listo para transformar tu negocio?</GradientText>
             </h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Join thousands of companies automating their processes with
-              Processia.
+              &Uacute;nete a las empresas que ya automatizan sus procesos con
+              Eskadia. Empieza gratis hoy.
             </p>
             <ShimmerButton shimmerColor="rgba(99, 102, 241, 0.3)">
               <Link
                 href="/get-started"
                 className="px-12 py-4 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors inline-block text-lg font-semibold"
               >
-                Start Free Trial
+                Comenzar ahora
               </Link>
             </ShimmerButton>
           </div>

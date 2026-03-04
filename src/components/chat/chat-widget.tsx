@@ -22,11 +22,11 @@ interface ChatState {
 // Constants
 const MAX_MESSAGE_LENGTH = 500;
 const MAX_STORED_MESSAGES = 50;
-const STORAGE_KEY = 'processia-chat-state';
+const STORAGE_KEY = 'eskadia-chat-state';
 const WELCOME_MESSAGE: Message = {
   id: 'welcome',
   role: 'assistant',
-  content: '¡Hola! 👋 Soy el asistente de Processia.ai. Pregúntame sobre nuestro CRM inteligente, servicios de automatización o cursos. ¿En qué puedo ayudarte? 🚀',
+  content: '¡Hola! 👋 Soy el asistente de Eskadia.ai. Pregúntame sobre nuestro CRM inteligente, servicios de automatización o cursos. ¿En qué puedo ayudarte? 🚀',
   timestamp: Date.now(),
 };
 
@@ -277,7 +277,7 @@ export function ChatWidget() {
                   <MessageCircle className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold text-lg">Processia AI</h3>
+                  <h3 className="text-white font-semibold text-lg">Eskadia AI</h3>
                   <p className="text-white/80 text-xs">Asistente Inteligente</p>
                 </div>
               </div>

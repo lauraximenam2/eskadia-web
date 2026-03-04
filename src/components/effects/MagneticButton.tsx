@@ -35,11 +35,9 @@ export function MagneticButton({
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
 
-    // Calcular distancia del cursor al centro del elemento
-    const distanceX = e.clientX - centerX;
-    const distanceY = e.clientY - centerY;
-
-
+    // Mover el elemento hacia el cursor
+    x.set((e.clientX - centerX) * strength);
+    y.set((e.clientY - centerY) * strength);
   };
 
   const handleMouseLeave = () => {

@@ -1,10 +1,10 @@
 {
-  "name": "Processia AI Chat (Simple HTTP)",
+  "name": "Eskadia AI Chat (Simple HTTP)",
   "nodes": [
     {
       "parameters": {
         "httpMethod": "POST",
-        "path": "processia-chat",
+        "path": "eskadia-chat",
         "responseMode": "responseNode",
         "options": {}
       },
@@ -16,11 +16,11 @@
         240,
         300
       ],
-      "webhookId": "processia-chat"
+      "webhookId": "eskadia-chat"
     },
     {
       "parameters": {
-        "url": "=https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/public/data/processia-content.json",
+        "url": "=https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/public/data/eskadia-content.json",
         "options": {
           "timeout": 10000
         }
@@ -36,7 +36,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Extraer mensaje del webhook\nconst body = $input.first().json.body;\nconst message = body.message;\nconst sessionId = body.sessionId || `session_${Date.now()}`;\n\n// Obtener knowledge base\nconst kb = $('Load Knowledge').first().json;\n\n// Construir prompt del sistema\nconst systemPrompt = `Eres el asistente inteligente de Processia.ai, una plataforma de automatización empresarial.\n\n## INFORMACIÓN DE PROCESSIA:\n\n### CRM - Processia Core:\n- CRM accionable con IA integrada\n- Enriquecimiento automático con Apollo.io\n- Automatización nativa con n8n\n- Redacción automática de emails y cotizaciones\n- Precios: Gratis (básico), Pro ($97-$497/mes), Enterprise (personalizado)\n- Setup inicial: $1,500 - $5,000\n- Target: Startups y PyMES de 10-200 empleados\n\n### Servicios - Processia Flow:\n- Consultoría técnica en automatización\n- Auditoría e implementación de procesos\n- Proyectos: $3,000 - $15,000\n- Retainer: $500 - $2,500/mes\n\n### Academia - Processia Academy:\n- Cursos sobre n8n, IA y automatización\n- Certificaciones profesionales\n- Cursos desde gratis hasta $2,997\n- Bootcamps B2B: $997 - $5,000\n\n### Valores Únicos:\n- Modelo Product-Led Growth con nivel gratuito\n- IA integrada (no bolt-on)\n- Datos enriquecidos automáticamente\n- Automatización sin código\n\n## INSTRUCCIONES:\n1. Responde en español, tono profesional pero amigable\n2. Usa emojis ocasionalmente (1-2 por mensaje)\n3. Respuestas concisas: máximo 200 palabras\n4. Si no sabes algo, sé honesto\n5. Enfatiza beneficios sobre características\n6. Menciona el modelo freemium cuando sea relevante`;\n\nreturn {\n  json: {\n    systemPrompt,\n    userMessage: message,\n    sessionId,\n    knowledgeBase: kb\n  }\n};"
+        "jsCode": "// Extraer mensaje del webhook\nconst body = $input.first().json.body;\nconst message = body.message;\nconst sessionId = body.sessionId || `session_${Date.now()}`;\n\n// Obtener knowledge base\nconst kb = $('Load Knowledge').first().json;\n\n// Construir prompt del sistema\nconst systemPrompt = `Eres el asistente inteligente de Eskadia.ai, una plataforma de automatización empresarial.\n\n## INFORMACIÓN DE ESKADIA:\n\n### CRM - Eskadia Core:\n- CRM accionable con IA integrada\n- Enriquecimiento automático con Apollo.io\n- Automatización nativa con n8n\n- Redacción automática de emails y cotizaciones\n- Precios: Gratis (básico), Pro ($97-$497/mes), Enterprise (personalizado)\n- Setup inicial: $1,500 - $5,000\n- Target: Startups y PyMES de 10-200 empleados\n\n### Servicios - Eskadia Flow:\n- Consultoría técnica en automatización\n- Auditoría e implementación de procesos\n- Proyectos: $3,000 - $15,000\n- Retainer: $500 - $2,500/mes\n\n### Academia - Eskadia Academy:\n- Cursos sobre n8n, IA y automatización\n- Certificaciones profesionales\n- Cursos desde gratis hasta $2,997\n- Bootcamps B2B: $997 - $5,000\n\n### Valores Únicos:\n- Modelo Product-Led Growth con nivel gratuito\n- IA integrada (no bolt-on)\n- Datos enriquecidos automáticamente\n- Automatización sin código\n\n## INSTRUCCIONES:\n1. Responde en español, tono profesional pero amigable\n2. Usa emojis ocasionalmente (1-2 por mensaje)\n3. Respuestas concisas: máximo 200 palabras\n4. Si no sabes algo, sé honesto\n5. Enfatiza beneficios sobre características\n6. Menciona el modelo freemium cuando sea relevante`;\n\nreturn {\n  json: {\n    systemPrompt,\n    userMessage: message,\n    sessionId,\n    knowledgeBase: kb\n  }\n};"
       },
       "id": "prepare-prompt",
       "name": "Prepare Prompt",
@@ -108,7 +108,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Obtener respuesta de DeepSeek\nconst aiData = $input.first().json;\nconst aiResponse = aiData.choices[0].message.content;\n\n// Obtener datos anteriores\nconst preparedData = $('Prepare Prompt').first().json;\nconst sessionId = preparedData.sessionId;\n\n// Función para detectar temas y extraer fuentes\nfunction extractSources(response) {\n  const sources = [];\n  const lower = response.toLowerCase();\n  \n  // CRM\n  if (lower.includes('crm') || lower.includes('apollo') || \n      lower.includes('enriquecimiento') || lower.includes('contactos')) {\n    sources.push({\n      title: '🎯 Processia Core - CRM Inteligente',\n      url: 'https://processia.ai/crm'\n    });\n  }\n  \n  // Flow\n  if (lower.includes('flow') || lower.includes('consultoría') || \n      lower.includes('automatización') || lower.includes('implementación') ||\n      lower.includes('integración')) {\n    sources.push({\n      title: '⚙️ Processia Flow - Automatización',\n      url: 'https://processia.ai/flow'\n    });\n  }\n  \n  // Academy\n  if (lower.includes('academy') || lower.includes('curso') || \n      lower.includes('formación') || lower.includes('certificación') ||\n      lower.includes('aprender') || lower.includes('n8n')) {\n    sources.push({\n      title: '🎓 Processia Academy - Cursos',\n      url: 'https://processia.ai/academy'\n    });\n  }\n  \n  // Pricing\n  if (lower.includes('precio') || lower.includes('plan') || \n      lower.includes('gratis') || lower.includes('free') ||\n      lower.includes('$') || lower.includes('costo') ||\n      lower.includes('pro') || lower.includes('enterprise')) {\n    sources.push({\n      title: '💰 Planes y Precios',\n      url: 'https://processia.ai/pricing'\n    });\n  }\n  \n  // Eliminar duplicados\n  return [...new Map(sources.map(s => [s.url, s])).values()].slice(0, 3);\n}\n\nconst sources = extractSources(aiResponse);\n\nreturn {\n  json: {\n    response: aiResponse,\n    sources: sources,\n    sessionId: sessionId,\n    timestamp: new Date().toISOString(),\n    metadata: {\n      model: aiData.model,\n      tokensUsed: aiData.usage?.total_tokens || 0,\n      tokensPrompt: aiData.usage?.prompt_tokens || 0,\n      tokensCompletion: aiData.usage?.completion_tokens || 0\n    }\n  }\n};"
+        "jsCode": "// Obtener respuesta de DeepSeek\nconst aiData = $input.first().json;\nconst aiResponse = aiData.choices[0].message.content;\n\n// Obtener datos anteriores\nconst preparedData = $('Prepare Prompt').first().json;\nconst sessionId = preparedData.sessionId;\n\n// Función para detectar temas y extraer fuentes\nfunction extractSources(response) {\n  const sources = [];\n  const lower = response.toLowerCase();\n  \n  // CRM\n  if (lower.includes('crm') || lower.includes('apollo') || \n      lower.includes('enriquecimiento') || lower.includes('contactos')) {\n    sources.push({\n      title: '🎯 Eskadia Core - CRM Inteligente',\n      url: 'https://eskadia.ai/crm'\n    });\n  }\n  \n  // Flow\n  if (lower.includes('flow') || lower.includes('consultoría') || \n      lower.includes('automatización') || lower.includes('implementación') ||\n      lower.includes('integración')) {\n    sources.push({\n      title: '⚙️ Eskadia Flow - Automatización',\n      url: 'https://eskadia.ai/flow'\n    });\n  }\n  \n  // Academy\n  if (lower.includes('academy') || lower.includes('curso') || \n      lower.includes('formación') || lower.includes('certificación') ||\n      lower.includes('aprender') || lower.includes('n8n')) {\n    sources.push({\n      title: '🎓 Eskadia Academy - Cursos',\n      url: 'https://eskadia.ai/academy'\n    });\n  }\n  \n  // Pricing\n  if (lower.includes('precio') || lower.includes('plan') || \n      lower.includes('gratis') || lower.includes('free') ||\n      lower.includes('$') || lower.includes('costo') ||\n      lower.includes('pro') || lower.includes('enterprise')) {\n    sources.push({\n      title: '💰 Planes y Precios',\n      url: 'https://eskadia.ai/pricing'\n    });\n  }\n  \n  // Eliminar duplicados\n  return [...new Map(sources.map(s => [s.url, s])).values()].slice(0, 3);\n}\n\nconst sources = extractSources(aiResponse);\n\nreturn {\n  json: {\n    response: aiResponse,\n    sources: sources,\n    sessionId: sessionId,\n    timestamp: new Date().toISOString(),\n    metadata: {\n      model: aiData.model,\n      tokensUsed: aiData.usage?.total_tokens || 0,\n      tokensPrompt: aiData.usage?.prompt_tokens || 0,\n      tokensCompletion: aiData.usage?.completion_tokens || 0\n    }\n  }\n};"
       },
       "id": "extract-sources",
       "name": "Extract Sources",
@@ -157,7 +157,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Error handling\nconst sessionId = $('Prepare Prompt').first()?.json?.sessionId || 'error-session';\n\nreturn {\n  json: {\n    response: 'Lo siento, estoy teniendo problemas técnicos en este momento. 😔 Por favor, intenta de nuevo en unos segundos o contáctanos directamente.',\n    sources: [\n      {\n        title: '📧 Contacto Processia',\n        url: 'https://processia.ai/contact'\n      },\n      {\n        title: '❓ FAQs',\n        url: 'https://processia.ai/pricing#faq'\n      }\n    ],\n    sessionId: sessionId,\n    timestamp: new Date().toISOString(),\n    error: true\n  }\n};"
+        "jsCode": "// Error handling\nconst sessionId = $('Prepare Prompt').first()?.json?.sessionId || 'error-session';\n\nreturn {\n  json: {\n    response: 'Lo siento, estoy teniendo problemas técnicos en este momento. 😔 Por favor, intenta de nuevo en unos segundos o contáctanos directamente.',\n    sources: [\n      {\n        title: '📧 Contacto Eskadia',\n        url: 'https://eskadia.ai/contact'\n      },\n      {\n        title: '❓ FAQs',\n        url: 'https://eskadia.ai/pricing#faq'\n      }\n    ],\n    sessionId: sessionId,\n    timestamp: new Date().toISOString(),\n    error: true\n  }\n};"
       },
       "id": "error-response",
       "name": "Error Response",
@@ -249,8 +249,8 @@
       "id": "chat-tag"
     },
     {
-      "name": "processia",
-      "id": "processia-tag"
+      "name": "eskadia",
+      "id": "eskadia-tag"
     }
   ],
   "triggerCount": 1,

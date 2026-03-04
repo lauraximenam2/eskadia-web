@@ -7,31 +7,32 @@ import { DotGrid, CursorSpotlight } from "@/components/effects";
 import { ChatWidget } from "@/components/chat/chat-widget";
 
 export const metadata: Metadata = {
-  title: "Processia - Intelligent Automation Platform",
+  title: "Eskadia - AI-liados de tu progreso",
   description:
-    "Build processes that scale. Not teams that don't. AI-powered automation for modern businesses.",
+    "AI-liados de tu progreso. Automatización inteligente, CRM con IA y consultoría para empresas modernas.",
   keywords: [
-    "automation",
-    "AI",
+    "automatización",
+    "IA",
     "CRM",
     "workflow",
-    "business automation",
+    "automatización empresarial",
     "n8n",
+    "consultoría",
   ],
-  authors: [{ name: "Processia" }],
+  authors: [{ name: "Eskadia" }],
   openGraph: {
-    title: "Processia - Intelligent Automation Platform",
+    title: "Eskadia - AI-liados de tu progreso",
     description:
-      "Build processes that scale. Not teams that don't. AI-powered automation for modern businesses.",
+      "AI-liados de tu progreso. Automatización inteligente, CRM con IA y consultoría para empresas modernas.",
     type: "website",
-    locale: "en_US",
-    siteName: "Processia",
+    locale: "es_ES",
+    siteName: "Eskadia",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Processia - Intelligent Automation Platform",
+    title: "Eskadia - AI-liados de tu progreso",
     description:
-      "Build processes that scale. Not teams that don't.",
+      "AI-liados de tu progreso.",
   },
 };
 
@@ -41,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="es" className="dark">
       <body
         className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}
       >

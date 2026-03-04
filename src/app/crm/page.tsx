@@ -8,7 +8,7 @@ import Link from "next/link";
 import { Check, X } from "lucide-react";
 
 export const metadata = {
-  title: "Processia CRM - AI-Powered Customer Management",
+  title: "Eskadia CRM - AI-Powered Customer Management",
   description:
     "Transform your customer relationships with intelligent automation, predictive analytics, and seamless integrations.",
 };
@@ -146,7 +146,7 @@ export default function CRMPage() {
           </h1>
 
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Stop fighting with complex CRM systems. Processia CRM uses AI to
+            Stop fighting with complex CRM systems. Eskadia CRM uses AI to
             automate tedious tasks, predict customer needs, and help your team
             close more deals.
           </p>
@@ -177,7 +177,7 @@ export default function CRMPage() {
               <iframe
                 className="w-full h-full"
                 src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1"
-                title="Processia CRM Demo"
+                title="Eskadia CRM Demo"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
@@ -349,7 +349,7 @@ export default function CRMPage() {
               <GradientText>Ready to Transform Your Sales?</GradientText>
             </h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Join thousands of teams using Processia CRM to close more deals
+              Join thousands of teams using Eskadia CRM to close more deals
               and build better customer relationships.
             </p>
             <ShimmerButton shimmerColor="rgba(99, 102, 241, 0.3)">

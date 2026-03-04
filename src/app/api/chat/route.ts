@@ -8,6 +8,7 @@ export const maxDuration = 30;
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
 
 // Simple rate limiter: max 10 requests per minute per IP
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function checkRateLimit(ip: string): boolean {
   const now = Date.now();
   const limit = rateLimitMap.get(ip);
@@ -39,6 +40,7 @@ interface ChatResponse {
 export async function POST(req: NextRequest) {
   try {
     // Get client IP for rate limiting
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const ip = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
 
     // Rate limiting (commented out for development, uncomment in production)

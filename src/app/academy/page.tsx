@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 
 export const metadata = {
-  title: "Processia Academy - Learn Business Automation",
+  title: "Eskadia Academy - Learn Business Automation",
   description:
     "Master automation and AI with expert-led courses. Get certified and transform your career.",
 };
@@ -52,7 +52,7 @@ export default function AcademyPage() {
     {
       title: "CRM Implementation",
       description:
-        "Set up and customize Processia CRM for your specific business needs.",
+        "Set up and customize Eskadia CRM for your specific business needs.",
       duration: "6 hours",
       level: "Beginner",
       students: 1567,

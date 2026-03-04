@@ -363,7 +363,7 @@ export default function PricingPage() {
               <GradientText>Ready to Get Started?</GradientText>
             </h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Join thousands of teams automating their workflows with Processia
+              Join thousands of teams automating their workflows with Eskadia
             </p>
             <ShimmerButton shimmerColor="rgba(99, 102, 241, 0.3)">
               <Link

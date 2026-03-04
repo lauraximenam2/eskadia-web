@@ -1,4 +1,4 @@
-# 🤖 Guía de Configuración del Workflow de n8n para Processia Chat
+# 🤖 Guía de Configuración del Workflow de n8n para Eskadia Chat
 
 Esta guía te ayudará a configurar el workflow de n8n para que tu chat widget funcione con DeepSeek.
 
@@ -8,7 +8,7 @@ Esta guía te ayudará a configurar el workflow de n8n para que tu chat widget f
 
 1. **Cuenta de n8n** (self-hosted o n8n.cloud)
 2. **API Key de DeepSeek** - Obtén una en [platform.deepseek.com](https://platform.deepseek.com)
-3. **Archivo processia-content.json** accesible públicamente
+3. **Archivo eskadia-content.json** accesible públicamente
 
 ---
 
@@ -16,7 +16,7 @@ Esta guía te ayudará a configurar el workflow de n8n para que tu chat widget f
 
 1. Abre tu instancia de n8n
 2. Ve a **Workflows** → **Add workflow** → **Import from File**
-3. Selecciona el archivo `n8n-workflow-processia-chat.json`
+3. Selecciona el archivo `n8n-workflow-eskadia-chat.json`
 4. Haz clic en **Import**
 
 ---
@@ -47,19 +47,19 @@ Si prefieres usar OpenAI en lugar de DeepSeek:
 
 ## 📦 Paso 3: Configurar la Carga del Knowledge Base
 
-Tienes **3 opciones** para cargar el archivo `processia-content.json`:
+Tienes **3 opciones** para cargar el archivo `eskadia-content.json`:
 
 ### Opción 1: Subir a GitHub (Recomendado para producción)
 
-1. Sube `public/data/processia-content.json` a tu repositorio de GitHub
+1. Sube `public/data/eskadia-content.json` a tu repositorio de GitHub
 2. Obtén la URL raw del archivo:
    ```
-   https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/public/data/processia-content.json
+   https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/public/data/eskadia-content.json
    ```
 3. En el nodo **"Load Knowledge Base"**, actualiza la URL:
    ```json
    {
-     "url": "https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/public/data/processia-content.json"
+     "url": "https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/public/data/eskadia-content.json"
    }
    ```
 
@@ -68,7 +68,7 @@ Tienes **3 opciones** para cargar el archivo `processia-content.json`:
 1. Asegúrate de que tu servidor Next.js esté corriendo en producción
 2. El archivo estará disponible en:
    ```
-   https://processia.ai/data/processia-content.json
+   https://eskadia.ai/data/eskadia-content.json
    ```
 3. Actualiza la URL en el nodo **"Load Knowledge Base"**
 
@@ -78,7 +78,7 @@ Si tienes n8n self-hosted y el archivo en el mismo servidor:
 
 1. **Elimina** el nodo "Load Knowledge Base"
 2. Agrega un nodo **"Read Binary Files"**
-3. Configura la ruta: `/ruta/completa/a/processia-content.json`
+3. Configura la ruta: `/ruta/completa/a/eskadia-content.json`
 4. Conecta directamente a "Prepare Context"
 
 ---
@@ -88,7 +88,7 @@ Si tienes n8n self-hosted y el archivo en el mismo servidor:
 1. Abre el nodo **"Webhook"**
 2. Verás la URL del webhook generada, algo como:
    ```
-   https://n8n.grupologali.com/webhook/processia-chat
+   https://n8n.grupologali.com/webhook/eskadia-chat
    ```
 3. Copia esta URL
 
@@ -97,7 +97,7 @@ Si tienes n8n self-hosted y el archivo en el mismo servidor:
 Edita el archivo `.env.local`:
 
 ```bash
-N8N_WEBHOOK_URL=https://TU_INSTANCIA_N8N.com/webhook/processia-chat
+N8N_WEBHOOK_URL=https://TU_INSTANCIA_N8N.com/webhook/eskadia-chat
 ```
 
 **IMPORTANTE:** Reinicia tu servidor Next.js después de cambiar el `.env.local`:
@@ -127,10 +127,10 @@ npm run dev
 ### Prueba con Postman/curl:
 
 ```bash
-curl -X POST https://TU_INSTANCIA_N8N.com/webhook/processia-chat \
+curl -X POST https://TU_INSTANCIA_N8N.com/webhook/eskadia-chat \
   -H "Content-Type: application/json" \
   -d '{
-    "message": "¿Qué es Processia?",
+    "message": "¿Qué es Eskadia?",
     "sessionId": "test-session-123",
     "timestamp": "2026-02-17T19:00:00.000Z"
   }'
@@ -140,11 +140,11 @@ Respuesta esperada:
 
 ```json
 {
-  "response": "¡Hola! Processia es una plataforma de automatización...",
+  "response": "¡Hola! Eskadia es una plataforma de automatización...",
   "sources": [
     {
-      "title": "Processia Core - CRM Inteligente",
-      "url": "https://processia.ai/crm"
+      "title": "Eskadia Core - CRM Inteligente",
+      "url": "https://eskadia.ai/crm"
     }
   ],
   "sessionId": "test-session-123",
@@ -162,7 +162,7 @@ Edita el nodo **"Prepare Context"** para cambiar cómo responde el asistente:
 
 ```javascript
 const context = `
-Eres un asistente inteligente de Processia.ai.
+Eres un asistente inteligente de Eskadia.ai.
 
 PERSONALIDAD:
 - Profesional pero cercano
@@ -236,7 +236,7 @@ En el nodo **"DeepSeek Chat"**:
 ### Ver las ejecuciones:
 
 1. En n8n, ve a **Executions**
-2. Filtra por "Processia AI Chat Assistant"
+2. Filtra por "Eskadia AI Chat Assistant"
 3. Revisa las ejecuciones exitosas y fallidas
 
 ### Métricas útiles:
@@ -324,7 +324,7 @@ Si tienes problemas:
 
 ## 🎉 ¡Listo!
 
-Tu chat inteligente de Processia está funcionando. Los usuarios ahora pueden:
+Tu chat inteligente de Eskadia está funcionando. Los usuarios ahora pueden:
 
 ✅ Preguntar sobre el CRM
 ✅ Consultar precios y planes

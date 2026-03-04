@@ -8,7 +8,7 @@ import Link from "next/link";
 import { Target, Zap, Users, Heart, TrendingUp, Shield } from "lucide-react";
 
 export const metadata = {
-  title: "About Processia - Our Mission & Team",
+  title: "About Eskadia - Our Mission & Team",
   description:
     "Learn about our mission to democratize automation and meet the team building the future of business processes.",
 };

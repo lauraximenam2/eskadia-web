@@ -1,4 +1,4 @@
-# 🤖 Workflows de n8n para Processia Chat
+# 🤖 Workflows de n8n para Eskadia Chat
 
 Tienes **2 versiones** del workflow. Elige la que mejor se adapte a tu setup de n8n.
 
@@ -20,7 +20,7 @@ Tienes **2 versiones** del workflow. Elige la que mejor se adapte a tu setup de 
 - 🔧 Fácil de debuggear
 - ⚡ Más rápido de configurar
 
-### 🔬 Opción 2: `n8n-workflow-processia-chat.json` (AVANZADO)
+### 🔬 Opción 2: `n8n-workflow-eskadia-chat.json` (AVANZADO)
 
 **Usa este si:**
 - ✅ Tienes el plugin `@n8n/n8n-nodes-langchain` instalado
@@ -63,13 +63,13 @@ Value: Bearer sk-TU_API_KEY_AQUI
 ### 3️⃣ Actualizar URLs
 
 **En el workflow:**
-- Nodo "Load Knowledge": Cambia la URL a donde esté tu `processia-content.json`
+- Nodo "Load Knowledge": Cambia la URL a donde esté tu `eskadia-content.json`
 
 **En tu proyecto Next.js:**
 
 ```bash
 # Edita .env.local
-N8N_WEBHOOK_URL=https://n8n.grupologali.com/webhook/processia-chat
+N8N_WEBHOOK_URL=https://n8n.grupologali.com/webhook/eskadia-chat
 
 # Reinicia el servidor
 npm run dev
@@ -77,7 +77,7 @@ npm run dev
 
 ---
 
-## 📍 ¿Dónde Hostear processia-content.json?
+## 📍 ¿Dónde Hostear eskadia-content.json?
 
 Tienes 3 opciones:
 
@@ -85,12 +85,12 @@ Tienes 3 opciones:
 
 ```bash
 # 1. Sube a tu repo
-git add public/data/processia-content.json
+git add public/data/eskadia-content.json
 git commit -m "Add chat knowledge base"
 git push
 
 # 2. Obtén URL raw
-https://raw.githubusercontent.com/TU_USER/TU_REPO/main/public/data/processia-content.json
+https://raw.githubusercontent.com/TU_USER/TU_REPO/main/public/data/eskadia-content.json
 
 # 3. Usa esa URL en el nodo "Load Knowledge"
 ```
@@ -99,7 +99,7 @@ https://raw.githubusercontent.com/TU_USER/TU_REPO/main/public/data/processia-con
 
 ```bash
 # URL pública
-https://processia.ai/data/processia-content.json
+https://eskadia.ai/data/eskadia-content.json
 
 # Nota: Asegúrate de que la carpeta public/ sea accesible
 ```
@@ -125,13 +125,13 @@ const knowledgeBase = {
 npm run dev
 # Abre http://localhost:3002
 # Click en el botón del chat
-# Pregunta: "¿Qué es Processia?"
+# Pregunta: "¿Qué es Eskadia?"
 ```
 
 ### Con curl:
 
 ```bash
-curl -X POST https://n8n.grupologali.com/webhook/processia-chat \
+curl -X POST https://n8n.grupologali.com/webhook/eskadia-chat \
   -H "Content-Type: application/json" \
   -d '{
     "message": "¿Cuánto cuesta el plan Pro?",
@@ -143,11 +143,11 @@ curl -X POST https://n8n.grupologali.com/webhook/processia-chat \
 
 ```json
 {
-  "response": "El plan Pro de Processia tiene un rango de precios...",
+  "response": "El plan Pro de Eskadia tiene un rango de precios...",
   "sources": [
     {
       "title": "💰 Planes y Precios",
-      "url": "https://processia.ai/pricing"
+      "url": "https://eskadia.ai/pricing"
     }
   ],
   "sessionId": "test-123",
@@ -187,7 +187,7 @@ curl -X POST https://n8n.grupologali.com/webhook/processia-chat \
 
 ```bash
 1. En n8n: Sidebar → Executions
-2. Filtrar por: "Processia AI Chat"
+2. Filtrar por: "Eskadia AI Chat"
 3. Ver detalles de cada ejecución
 ```
 
@@ -273,4 +273,4 @@ Tu chat inteligente está configurado. Ahora puedes:
 
 ---
 
-**Hecho con 💜 por Processia AI**
+**Hecho con 💜 por Eskadia AI**
