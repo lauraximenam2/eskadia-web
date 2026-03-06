@@ -3,60 +3,61 @@ import {
   GlassCard,
   ShimmerButton,
   NumberCounter,
+  HeroWatermark,
 } from "@/components/effects";
 import Link from "next/link";
 import { Check, X } from "lucide-react";
 
 export const metadata = {
-  title: "Eskadia CRM - AI-Powered Customer Management",
+  title: "Eskadia CRM - Gestión de clientes con IA",
   description:
-    "Transform your customer relationships with intelligent automation, predictive analytics, and seamless integrations.",
+    "Transforma tus relaciones con clientes con automatización inteligente, analítica predictiva e integraciones sin fricciones.",
 };
 
 export default function CRMPage() {
   const features = [
     {
-      title: "Intelligent Lead Scoring",
+      title: "Puntuación inteligente de leads",
       description:
-        "AI-powered algorithms analyze customer behavior and engagement to automatically prioritize your most valuable leads.",
+        "Algoritmos con IA que analizan el comportamiento y engagement de tus clientes para priorizar automáticamente los leads más valiosos.",
       benefits: [
-        "Predictive lead scoring",
-        "Behavioral analytics",
-        "Automated prioritization",
-        "Real-time insights",
+        "Puntuación predictiva de leads",
+        "Analítica de comportamiento",
+        "Priorización automática",
+        "Insights en tiempo real",
       ],
     },
     {
-      title: "Unified Customer View",
+      title: "Vista unificada del cliente",
       description:
-        "Get a complete 360° view of every customer interaction across all channels in one intuitive dashboard.",
+        "Obtén una visión completa 360° de cada interacción con el cliente a través de todos los canales en un dashboard intuitivo.",
       benefits: [
-        "Cross-channel tracking",
-        "Interaction history",
-        "Custom data fields",
-        "Activity timeline",
+        "Seguimiento multicanal",
+        "Historial de interacciones",
+        "Campos de datos personalizados",
+        "Línea temporal de actividad",
       ],
     },
     {
-      title: "Automated Workflows",
+      title: "Flujos de trabajo automatizados",
       description:
-        "Build sophisticated automation flows that respond to customer actions and trigger the right engagement at the right time.",
+        "Crea flujos de automatización sofisticados que responden a las acciones del cliente y activan el engagement adecuado en el momento preciso.",
       benefits: [
-        "Visual workflow builder",
-        "Conditional logic",
-        "Multi-step sequences",
-        "Performance analytics",
+        "Constructor visual de flujos",
+        "Lógica condicional",
+        "Secuencias multipaso",
+        "Analítica de rendimiento",
       ],
     },
     {
-      title: "Smart Integrations",
+      title: "Integraciones inteligentes",
       description:
-        "Connect with 200+ tools and platforms through native integrations or custom API connections.",
+        "Conecta con más de 200 herramientas y plataformas a través de integraciones nativas o conexiones API personalizadas.",
       benefits: [
-        "Native integrations",
-        "Custom API access",
-        "Webhook support",
-        "Real-time sync",
+        "Integraciones nativas",
+        "Acceso API personalizado",
+        "Soporte de webhooks",
+        "Sincronización en tiempo real",
       ],
     },
   ];
@@ -65,28 +66,28 @@ export default function CRMPage() {
     {
       name: "Starter",
       price: 29,
-      description: "Perfect for small teams getting started",
+      description: "Perfecto para equipos pequeños que empiezan",
       features: [
-        "Up to 1,000 contacts",
-        "Basic automation",
-        "Email support",
-        "5 team members",
-        "10 integrations",
+        "Hasta 1.000 contactos",
+        "Automatización básica",
+        "Soporte por email",
+        "5 miembros del equipo",
+        "10 integraciones",
       ],
-      limitations: ["No API access", "Limited reports"],
+      limitations: ["Sin acceso API", "Informes limitados"],
     },
     {
       name: "Professional",
       price: 99,
-      description: "For growing teams that need more power",
+      description: "Para equipos en crecimiento que necesitan más",
       features: [
-        "Up to 10,000 contacts",
-        "Advanced automation",
-        "Priority support",
-        "Unlimited team members",
-        "50 integrations",
-        "API access",
-        "Custom reports",
+        "Hasta 10.000 contactos",
+        "Automatización avanzada",
+        "Soporte prioritario",
+        "Miembros ilimitados",
+        "50 integraciones",
+        "Acceso API",
+        "Informes personalizados",
       ],
       limitations: [],
       highlighted: true,
@@ -94,16 +95,16 @@ export default function CRMPage() {
     {
       name: "Enterprise",
       price: 299,
-      description: "For large organizations with custom needs",
+      description: "Para organizaciones grandes con necesidades específicas",
       features: [
-        "Unlimited contacts",
-        "Custom automation",
-        "Dedicated support",
-        "Unlimited team members",
-        "Unlimited integrations",
-        "Advanced API access",
-        "Custom dashboards",
-        "SSO & advanced security",
+        "Contactos ilimitados",
+        "Automatización personalizada",
+        "Soporte dedicado",
+        "Miembros ilimitados",
+        "Integraciones ilimitadas",
+        "API avanzada",
+        "Dashboards personalizados",
+        "SSO y seguridad avanzada",
       ],
       limitations: [],
     },
@@ -111,44 +112,50 @@ export default function CRMPage() {
 
   const faqs = [
     {
-      question: "How long does it take to set up?",
+      question: "¿Cuánto tiempo lleva la configuración?",
       answer:
-        "Most teams are up and running in under 30 minutes. Our onboarding wizard guides you through importing contacts, connecting integrations, and building your first automation.",
+        "La mayoría de equipos están operativos en menos de 30 minutos. Nuestro asistente de onboarding te guía para importar contactos, conectar integraciones y crear tu primera automatización.",
     },
     {
-      question: "Can I migrate data from my current CRM?",
+      question: "¿Puedo migrar datos desde mi CRM actual?",
       answer:
-        "Yes! We support data import from all major CRM platforms including Salesforce, HubSpot, and Pipedrive. Our support team can help ensure a smooth migration.",
+        "¡Sí! Soportamos importación de datos desde las principales plataformas CRM como Salesforce, HubSpot y Pipedrive. Nuestro equipo de soporte puede ayudarte con la migración.",
     },
     {
-      question: "What integrations are available?",
+      question: "¿Qué integraciones están disponibles?",
       answer:
-        "We integrate with 200+ tools including email providers, calendars, payment processors, and marketing platforms. You can also build custom integrations using our API.",
+        "Nos integramos con más de 200 herramientas incluyendo proveedores de email, calendarios, pasarelas de pago y plataformas de marketing. También puedes crear integraciones personalizadas con nuestra API.",
     },
     {
-      question: "Is my data secure?",
+      question: "¿Mis datos están seguros?",
       answer:
-        "Absolutely. We use enterprise-grade encryption, regular security audits, and comply with GDPR, SOC 2, and ISO 27001 standards. Your data is backed up daily.",
+        "Por supuesto. Usamos cifrado de nivel empresarial, auditorías de seguridad regulares y cumplimos con GDPR, SOC 2 e ISO 27001. Tus datos se respaldan diariamente.",
     },
   ];
 
   return (
     <>
       {/* Hero Section */}
-      <section className="relative max-w-7xl mx-auto px-4 py-32">
-        <div className="text-center space-y-8 mb-16">
+      <section className="relative max-w-7xl mx-auto px-4 pt-10 pb-20">
+        <HeroWatermark src="/logos/solo-k-512.svg" alt="Eskadia CRM" size={420} />
+        <div className="relative z-10 text-center space-y-8 mb-16">
+          <div className="flex justify-center">
+            <div className="w-20 h-20 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+              <img src="/logos/logo-crm.svg" alt="Eskadia CRM" className="w-12 h-12" />
+            </div>
+          </div>
           <h1 className="text-6xl font-bold">
             <GradientText as="span" animated={true}>
-              AI-Powered CRM
+              CRM con IA
             </GradientText>
             <br />
-            That Actually Works
+            que realmente funciona
           </h1>
 
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Stop fighting with complex CRM systems. Eskadia CRM uses AI to
-            automate tedious tasks, predict customer needs, and help your team
-            close more deals.
+            Deja de pelear con CRMs complejos. Eskadia CRM usa IA para
+            automatizar tareas tediosas, predecir necesidades de clientes y
+            ayudar a tu equipo a cerrar más ventas.
           </p>
 
           <div className="flex items-center justify-center gap-4">
@@ -157,15 +164,15 @@ export default function CRMPage() {
                 href="/get-started"
                 className="px-8 py-3 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors inline-block font-semibold"
               >
-                Start Free Trial
+                Prueba gratis
               </Link>
             </ShimmerButton>
 
             <Link
-              href="/demo"
+              href="/contact"
               className="px-8 py-3 border border-border rounded-lg hover:bg-card-hover transition-colors inline-block"
             >
-              Watch Demo
+              Solicitar demo
             </Link>
           </div>
         </div>
@@ -174,13 +181,7 @@ export default function CRMPage() {
         <div className="relative max-w-5xl mx-auto">
           <GlassCard glow={true} animatedBorder={true}>
             <div className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1"
-                title="Eskadia CRM Demo"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+              <p className="text-muted-foreground text-lg">Demo del producto</p>
             </div>
           </GlassCard>
         </div>
@@ -189,12 +190,12 @@ export default function CRMPage() {
         <div className="grid md:grid-cols-3 gap-8 mt-24 text-center">
           <div>
             <NumberCounter
-              value={10000}
+              value={500}
               duration={2000}
               suffix="+"
               className="text-4xl font-bold text-primary mb-2"
             />
-            <p className="text-muted-foreground">Active Users</p>
+            <p className="text-muted-foreground">Usuarios activos</p>
           </div>
           <div>
             <NumberCounter
@@ -203,7 +204,7 @@ export default function CRMPage() {
               suffix="%"
               className="text-4xl font-bold text-primary mb-2"
             />
-            <p className="text-muted-foreground">Average Sales Increase</p>
+            <p className="text-muted-foreground">Aumento medio en ventas</p>
           </div>
           <div>
             <NumberCounter
@@ -212,7 +213,7 @@ export default function CRMPage() {
               suffix="+"
               className="text-4xl font-bold text-primary mb-2"
             />
-            <p className="text-muted-foreground">Integrations</p>
+            <p className="text-muted-foreground">Integraciones</p>
           </div>
         </div>
       </section>
@@ -245,7 +246,7 @@ export default function CRMPage() {
             <div className={index % 2 === 1 ? "md:order-1" : ""}>
               <GlassCard hover={true} glow={true}>
                 <div className="aspect-square bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg flex items-center justify-center">
-                  <p className="text-muted-foreground">Feature Preview</p>
+                  <p className="text-muted-foreground">Vista previa</p>
                 </div>
               </GlassCard>
             </div>
@@ -257,10 +258,10 @@ export default function CRMPage() {
       <section className="max-w-7xl mx-auto px-4 py-32">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">
-            <GradientText>Simple, Transparent Pricing</GradientText>
+            <GradientText>Precios simples y transparentes</GradientText>
           </h2>
           <p className="text-xl text-muted-foreground">
-            Choose the plan that fits your team size and needs
+            Elige el plan que se adapte a tu equipo y necesidades
           </p>
         </div>
 
@@ -275,7 +276,7 @@ export default function CRMPage() {
               <div className="p-8">
                 {plan.highlighted && (
                   <div className="inline-block px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-semibold mb-4">
-                    Most Popular
+                    Más popular
                   </div>
                 )}
                 <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
@@ -283,8 +284,8 @@ export default function CRMPage() {
                   {plan.description}
                 </p>
                 <div className="mb-6">
-                  <span className="text-5xl font-bold">${plan.price}</span>
-                  <span className="text-muted-foreground">/month</span>
+                  <span className="text-5xl font-bold">{plan.price}€</span>
+                  <span className="text-muted-foreground">/mes</span>
                 </div>
                 <ShimmerButton
                   shimmerColor="rgba(99, 102, 241, 0.3)"
@@ -296,7 +297,7 @@ export default function CRMPage() {
                       : "border border-border hover:bg-card-hover"
                       }`}
                   >
-                    Get Started
+                    Empezar gratis
                   </button>
                 </ShimmerButton>
                 <ul className="mt-8 space-y-3">
@@ -325,7 +326,7 @@ export default function CRMPage() {
       <section className="max-w-4xl mx-auto px-4 py-32">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">
-            <GradientText>Frequently Asked Questions</GradientText>
+            <GradientText>Preguntas frecuentes</GradientText>
           </h2>
         </div>
 
@@ -346,22 +347,22 @@ export default function CRMPage() {
         <GlassCard glow={true} animatedBorder={true}>
           <div className="p-16">
             <h2 className="text-4xl font-bold mb-4">
-              <GradientText>Ready to Transform Your Sales?</GradientText>
+              <GradientText>¿Listo para transformar tus ventas?</GradientText>
             </h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Join thousands of teams using Eskadia CRM to close more deals
-              and build better customer relationships.
+              Únete a las empresas que usan Eskadia CRM para cerrar más ventas
+              y construir mejores relaciones con sus clientes.
             </p>
             <ShimmerButton shimmerColor="rgba(99, 102, 241, 0.3)">
               <Link
                 href="/get-started"
                 className="px-12 py-4 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors inline-block text-lg font-semibold"
               >
-                Start Free 14-Day Trial
+                Prueba gratis 14 días
               </Link>
             </ShimmerButton>
             <p className="text-sm text-muted-foreground mt-4">
-              No credit card required • Cancel anytime
+              Sin tarjeta de crédito · Cancela cuando quieras
             </p>
           </div>
         </GlassCard>

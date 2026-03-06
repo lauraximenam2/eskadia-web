@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
+
 import { ChevronDown, Menu, X } from "lucide-react";
 import { MagneticButton, ShimmerButton } from "@/components/effects";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
@@ -22,23 +22,19 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border shadow-lg"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? "bg-background/80 backdrop-blur-xl border-b border-border shadow-lg"
+        : "bg-transparent"
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <Image
-              src="/logos/eskadia-logo-light.png"
+            <img
+              src="/logos/eskadia-letra-blanca.svg"
               alt="Eskadia"
-              width={140}
-              height={36}
-              className="h-8 w-auto"
-              priority
+              className="h-7 w-auto"
             />
           </Link>
 
@@ -55,76 +51,51 @@ export function Navbar() {
 
               <DropdownMenu.Portal>
                 <DropdownMenu.Content
-                  className="min-w-[260px] bg-card/95 backdrop-blur-xl border border-border rounded-lg p-2 shadow-xl"
-                  sideOffset={5}
+                  className="min-w-[300px] bg-card/95 backdrop-blur-xl border border-border rounded-xl p-2 shadow-xl"
+                  sideOffset={8}
                 >
                   <DropdownMenu.Item asChild>
                     <Link
                       href="/crm"
-                      className="flex flex-col px-4 py-3 rounded-md hover:bg-card-hover transition-colors cursor-pointer outline-none"
+                      className="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-card-hover transition-colors cursor-pointer outline-none group"
                     >
-                      <span className="font-semibold text-foreground">
-                        Eskadia CRM
-                      </span>
-                      <span className="text-sm text-muted-foreground">
-                        CRM inteligente con IA integrada
-                      </span>
+                      <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <img src="/logos/logo-crm.svg" alt="CRM" className="w-6 h-6" />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="font-semibold text-foreground text-sm">CRM</span>
+                        <span className="text-xs text-muted-foreground">CRM inteligente con IA integrada</span>
+                      </div>
                     </Link>
                   </DropdownMenu.Item>
 
                   <DropdownMenu.Item asChild>
                     <Link
                       href="/automatizacion"
-                      className="flex flex-col px-4 py-3 rounded-md hover:bg-card-hover transition-colors cursor-pointer outline-none"
+                      className="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-card-hover transition-colors cursor-pointer outline-none group"
                     >
-                      <span className="font-semibold text-foreground">
-                        Eskadia Automatización
-                      </span>
-                      <span className="text-sm text-muted-foreground">
-                        Flujos de trabajo sin código
-                      </span>
-                    </Link>
-                  </DropdownMenu.Item>
-
-                  <DropdownMenu.Item asChild>
-                    <Link
-                      href="/ai"
-                      className="flex flex-col px-4 py-3 rounded-md hover:bg-card-hover transition-colors cursor-pointer outline-none"
-                    >
-                      <span className="font-semibold text-foreground">
-                        Eskadia AI
-                      </span>
-                      <span className="text-sm text-muted-foreground">
-                        Inteligencia artificial aplicada
-                      </span>
+                      <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <img src="/logos/logo-autimatizacion.svg" alt="Automatización" className="w-6 h-6" />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="font-semibold text-foreground text-sm">Automatización</span>
+                        <span className="text-xs text-muted-foreground">Flujos de trabajo a medida</span>
+                      </div>
                     </Link>
                   </DropdownMenu.Item>
 
                   <DropdownMenu.Item asChild>
                     <Link
                       href="/consultoria"
-                      className="flex flex-col px-4 py-3 rounded-md hover:bg-card-hover transition-colors cursor-pointer outline-none"
+                      className="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-card-hover transition-colors cursor-pointer outline-none group"
                     >
-                      <span className="font-semibold text-foreground">
-                        Eskadia Consultoría
-                      </span>
-                      <span className="text-sm text-muted-foreground">
-                        Auditoría e implementación de procesos
-                      </span>
-                    </Link>
-                  </DropdownMenu.Item>
-
-                  <DropdownMenu.Item asChild>
-                    <Link
-                      href="/academy"
-                      className="flex flex-col px-4 py-3 rounded-md hover:bg-card-hover transition-colors cursor-pointer outline-none"
-                    >
-                      <span className="font-semibold text-foreground">
-                        Eskadia Academy
-                      </span>
-                      <span className="text-sm text-muted-foreground">
-                        Formación en automatización y n8n
-                      </span>
+                      <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <img src="/logos/logo-consultoria.svg" alt="Consultoría" className="w-6 h-6" />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="font-semibold text-foreground text-sm">Consultoría</span>
+                        <span className="text-xs text-muted-foreground">Auditoría e implementación de procesos</span>
+                      </div>
                     </Link>
                   </DropdownMenu.Item>
                 </DropdownMenu.Content>
@@ -193,35 +164,21 @@ export function Navbar() {
                 className="block px-4 py-2 text-foreground hover:bg-card-hover rounded-lg transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Eskadia CRM
+                CRM
               </Link>
               <Link
                 href="/automatizacion"
                 className="block px-4 py-2 text-foreground hover:bg-card-hover rounded-lg transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Eskadia Automatización
-              </Link>
-              <Link
-                href="/ai"
-                className="block px-4 py-2 text-foreground hover:bg-card-hover rounded-lg transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Eskadia AI
+                Automatización
               </Link>
               <Link
                 href="/consultoria"
                 className="block px-4 py-2 text-foreground hover:bg-card-hover rounded-lg transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Eskadia Consultoría
-              </Link>
-              <Link
-                href="/academy"
-                className="block px-4 py-2 text-foreground hover:bg-card-hover rounded-lg transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Eskadia Academy
+                Consultoría
               </Link>
             </div>
 

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+
 import { Github, Twitter, Linkedin, Mail } from "lucide-react";
 
 const footerLinks = {
@@ -7,10 +7,8 @@ const footerLinks = {
     title: "Productos",
     links: [
       { label: "Eskadia CRM", href: "/crm" },
-      { label: "Eskadia Automatización", href: "/automatizacion" },
-      { label: "Eskadia AI", href: "/ai" },
+      { label: "Eskadia Automatizaciones", href: "/automatizacion" },
       { label: "Eskadia Consultoría", href: "/consultoria" },
-      { label: "Eskadia Academy", href: "/academy" },
     ],
   },
   company: {
@@ -135,16 +133,14 @@ export function Footer() {
         {/* Bottom Section */}
         <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
           {/* Logo + Copyright */}
-          <div className="flex items-center space-x-4">
-            <Image
-              src="/logos/eskadia-logo-light.png"
+          <div className="flex items-center space-x-3">
+            <img
+              src="/logos/eskadia-letra-blanca.svg"
               alt="Eskadia"
-              width={120}
-              height={32}
-              className="h-7 w-auto"
+              className="h-40 w-40"
             />
             <span className="text-muted-foreground text-sm">
-              © {new Date().getFullYear()} Eskadia. Todos los derechos reservados.
+              © {new Date().getFullYear()} Todos los derechos reservados.
             </span>
           </div>
 

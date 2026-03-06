@@ -1,13 +1,12 @@
 import {
   GradientText,
-  MagneticButton,
   ShimmerButton,
   GlassCard,
   InfiniteScroll,
   NumberCounter,
+  HeroWatermark,
 } from "@/components/effects";
 import Link from "next/link";
-import Image from "next/image";
 
 export default function HomePage() {
   const logos = [
@@ -24,20 +23,10 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative max-w-7xl mx-auto px-4 py-32">
-        <div className="text-center space-y-8">
-          <div className="flex justify-center mb-4">
-            <Image
-              src="/logos/eskadia-logo-light.png"
-              alt="Eskadia"
-              width={280}
-              height={72}
-              className="h-16 w-auto"
-              priority
-            />
-          </div>
-
-          <GradientText as="h1" className="text-6xl font-bold" animated={true}>
+      <section className="relative max-w-7xl mx-auto px-4 pt-10 pb-20">
+        <HeroWatermark src="/logos/solo-k-512.svg" alt="Eskadia" size={420} />
+        <div className="relative z-10 text-center space-y-8">
+          <GradientText as="h1" className="text-5xl sm:text-6xl font-bold pb-2" animated={true}>
             AI-liados de tu progreso
           </GradientText>
 
@@ -47,14 +36,12 @@ export default function HomePage() {
           </p>
 
           <div className="flex items-center justify-center gap-4">
-            <MagneticButton strength={20}>
-              <Link
-                href="/about"
-                className="px-8 py-3 bg-card border border-border rounded-lg hover:bg-card-hover transition-colors inline-block"
-              >
-                Conocer m&aacute;s
-              </Link>
-            </MagneticButton>
+            <Link
+              href="/about"
+              className="px-8 py-3 bg-card border border-border rounded-lg hover:bg-card-hover transition-colors inline-block"
+            >
+              Conocer m&aacute;s
+            </Link>
 
             <ShimmerButton shimmerColor="rgba(99, 102, 241, 0.3)">
               <Link
@@ -106,34 +93,14 @@ export default function HomePage() {
             </div>
           </GlassCard>
 
-          <GlassCard hover={true} animatedBorder={true}>
-            <div className="p-6">
-              <h3 className="text-xl font-semibold mb-2">Eskadia Academy</h3>
-              <p className="text-muted-foreground">
-                Aprende automatizaci&oacute;n empresarial con cursos pr&aacute;cticos,
-                certificaciones y bootcamps sobre n8n, IA y m&aacute;s.
-              </p>
-            </div>
-          </GlassCard>
-
           <GlassCard hover={true} glow={true} animatedBorder={true}>
             <div className="p-6">
               <h3 className="text-xl font-semibold mb-2">
-                Eskadia Automatizaci&oacute;n
+                Eskadia Automatizaciones
               </h3>
               <p className="text-muted-foreground">
                 Dise&ntilde;a flujos de trabajo complejos visualmente.
                 Integraciones sin c&oacute;digo con las herramientas que ya usas.
-              </p>
-            </div>
-          </GlassCard>
-
-          <GlassCard hover={true} animatedBorder={true}>
-            <div className="p-6">
-              <h3 className="text-xl font-semibold mb-2">Eskadia AI</h3>
-              <p className="text-muted-foreground">
-                Inteligencia artificial aplicada a tus procesos. An&aacute;lisis
-                predictivo, asistentes virtuales y toma de decisiones inteligente.
               </p>
             </div>
           </GlassCard>
@@ -144,16 +111,6 @@ export default function HomePage() {
               <p className="text-muted-foreground">
                 Auditor&iacute;a e implementaci&oacute;n de procesos. Consultor&iacute;a
                 t&eacute;cnica para transformar tu operaci&oacute;n con tecnolog&iacute;a.
-              </p>
-            </div>
-          </GlassCard>
-
-          <GlassCard hover={true} glow={true} animatedBorder={true}>
-            <div className="p-6">
-              <h3 className="text-xl font-semibold mb-2">Eskadia Formaci&oacute;n</h3>
-              <p className="text-muted-foreground">
-                Capacitaci&oacute;n empresarial en automatizaci&oacute;n y herramientas
-                digitales. Programas B2B personalizados para tu equipo.
               </p>
             </div>
           </GlassCard>
@@ -199,18 +156,25 @@ export default function HomePage() {
       {/* Final CTA */}
       <section className="max-w-7xl mx-auto px-4 py-32 text-center">
         <GlassCard glow={true} animatedBorder={true}>
-          <div className="p-16">
-            <h2 className="text-4xl font-bold mb-4">
+          <div className="relative p-16 overflow-hidden">
+            {/* Decorative K watermark */}
+            <img
+              src="/logos/solo-k-512.svg"
+              alt=""
+              className="absolute right-[-40px] top-[-40px] h-64 w-64 opacity-[0.04] pointer-events-none select-none"
+              aria-hidden="true"
+            />
+            <h2 className="text-4xl font-bold mb-4 relative z-10">
               <GradientText>&iquest;Listo para transformar tu negocio?</GradientText>
             </h2>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto relative z-10">
               &Uacute;nete a las empresas que ya automatizan sus procesos con
               Eskadia. Empieza gratis hoy.
             </p>
             <ShimmerButton shimmerColor="rgba(99, 102, 241, 0.3)">
               <Link
                 href="/get-started"
-                className="px-12 py-4 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors inline-block text-lg font-semibold"
+                className="px-12 py-4 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors inline-block text-lg font-semibold relative z-10"
               >
                 Comenzar ahora
               </Link>

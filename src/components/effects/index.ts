@@ -12,3 +12,4 @@ export { GlassCard } from "./GlassCard";
 export { InfiniteScroll } from "./InfiniteScroll";
 export { NumberCounter } from "./NumberCounter";
 export { ParallaxImage } from "./ParallaxImage";
+export { HeroWatermark } from "./HeroWatermark";
