@@ -173,12 +173,12 @@ export default function AutomatizacionesPage() {
     <>
       {/* Hero Section */}
       <section className="relative max-w-7xl mx-auto px-4 pt-10 pb-20">
-        <HeroWatermark src="/logos/solo-k-512.svg" alt="Eskadia Automatización" size={420} />
+        <HeroWatermark src="/logos/logo-autimatizacion.svg" alt="Eskadia Automatización" size={340} />
         <div className="relative z-10 text-center space-y-8">
           <div className="flex justify-center">
-            <div className="w-20 h-20 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+            {/*             <div className="w-20 h-20 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center">
               <img src="/logos/logo-autimatizacion.svg" alt="Eskadia Automatización" className="w-12 h-12" />
-            </div>
+            </div> */}
           </div>
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-sm text-primary font-medium">
             <Zap className="w-4 h-4" />
@@ -396,11 +396,10 @@ export default function AutomatizacionesPage() {
                 >
                   <Link
                     href="/contact"
-                    className={`w-full px-6 py-3 rounded-lg font-semibold transition-colors inline-block text-center ${
-                      plan.highlighted
-                        ? "bg-primary text-white hover:bg-primary-hover"
-                        : "border border-border hover:bg-card-hover"
-                    }`}
+                    className={`w-full px-6 py-3 rounded-lg font-semibold transition-colors inline-block text-center ${plan.highlighted
+                      ? "bg-primary text-white hover:bg-primary-hover"
+                      : "border border-border hover:bg-card-hover"
+                      }`}
                   >
                     {plan.cta}
                   </Link>

@@ -9,36 +9,21 @@ interface HeroWatermarkProps {
   size?: number;
 }
 
-export function HeroWatermark({ src, alt, size = 420 }: HeroWatermarkProps) {
+export function HeroWatermark({ src, alt, size = 300 }: HeroWatermarkProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const spotlightRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(false);
 
   useEffect(() => {
     const section = containerRef.current?.parentElement;
     if (!section) return;
 
-    const onMove = (e: MouseEvent) => {
-      const rect = section.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-      if (spotlightRef.current) {
-        const gradient = `radial-gradient(circle 300px at ${x}% ${y}%, black 0%, transparent 75%)`;
-        spotlightRef.current.style.webkitMaskImage = gradient;
-        spotlightRef.current.style.maskImage = gradient;
-      }
-    };
-
     const onEnter = () => setActive(true);
     const onLeave = () => setActive(false);
 
-    section.addEventListener("mousemove", onMove);
     section.addEventListener("mouseenter", onEnter);
     section.addEventListener("mouseleave", onLeave);
 
     return () => {
-      section.removeEventListener("mousemove", onMove);
       section.removeEventListener("mouseenter", onEnter);
       section.removeEventListener("mouseleave", onLeave);
     };
@@ -47,50 +32,39 @@ export function HeroWatermark({ src, alt, size = 420 }: HeroWatermarkProps) {
   return (
     <div
       ref={containerRef}
-      className="absolute inset-0 overflow-hidden pointer-events-none"
+      className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block"
     >
-      {/* Base: K pulsando en la derecha, parcialmente fuera del borde */}
       <motion.img
         src={src}
         alt={alt}
         draggable={false}
-        className="absolute select-none object-contain top-1/2 -translate-y-1/2"
+        className="absolute select-none object-contain"
         style={{
           width: size,
           height: size,
-          right: -(size * 0.18),
+          right: 0,
+          top: 0,
         }}
-        animate={{
-          opacity: [0.05, 0.09, 0.05],
-          scale: [1, 1.02, 1],
-        }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        animate={
+          active
+            ? {
+                opacity: 0.45,
+                scale: 1.04,
+                filter:
+                  "drop-shadow(0 0 50px rgba(99,102,241,0.6)) drop-shadow(0 0 20px rgba(139,92,246,0.4))",
+              }
+            : {
+                opacity: [0.04, 0.07, 0.04],
+                scale: [1, 1.02, 1],
+                filter: "drop-shadow(0 0 0px rgba(99,102,241,0))",
+              }
+        }
+        transition={
+          active
+            ? { duration: 0.4, ease: "easeOut" }
+            : { duration: 6, repeat: Infinity, ease: "easeInOut" }
+        }
       />
-
-      {/* Spotlight: brillo donde está el cursor */}
-      <div
-        ref={spotlightRef}
-        className="absolute inset-0"
-        style={{
-          opacity: active ? 1 : 0,
-          transition: "opacity 0.4s ease",
-        }}
-      >
-        <img
-          src={src}
-          alt={alt}
-          draggable={false}
-          className="absolute select-none object-contain top-1/2 -translate-y-1/2"
-          style={{
-            width: size,
-            height: size,
-            right: -(size * 0.18),
-            opacity: 0.32,
-            filter:
-              "drop-shadow(0 0 60px rgba(99, 102, 241, 0.7)) drop-shadow(0 0 24px rgba(139, 92, 246, 0.5))",
-          }}
-        />
-      </div>
     </div>
   );
 }

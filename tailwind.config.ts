@@ -53,8 +53,10 @@ const config: Config = {
       },
 
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "Inter", "system-ui", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "JetBrains Mono", "monospace"],
+        sans: ["var(--font-dm-sans)", "system-ui", "sans-serif"],
+        heading: ["var(--font-jura)", "system-ui", "sans-serif"],
+        code: ["var(--font-chakra-petch)", "monospace"],
+        mono: ["var(--font-chakra-petch)", "monospace"],
       },
 
       borderRadius: {

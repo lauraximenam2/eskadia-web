@@ -138,12 +138,12 @@ export default function ConsultoriaPage() {
     <>
       {/* Hero Section */}
       <section className="relative max-w-7xl mx-auto px-4 pt-10 pb-20">
-        <HeroWatermark src="/logos/solo-k-512.svg" alt="Eskadia Consultoría" size={420} />
+        <HeroWatermark src="/logos/logo-consultoria.svg" alt="Eskadia Consultoría" size={340} />
         <div className="relative z-10 text-center space-y-8">
           <div className="flex justify-center">
-            <div className="w-20 h-20 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+            {/*             <div className="w-20 h-20 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center">
               <img src="/logos/logo-consultoria.svg" alt="Eskadia Consultoría" className="w-12 h-12" />
-            </div>
+            </div> */}
           </div>
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-sm text-primary font-medium">
             <Search className="w-4 h-4" />

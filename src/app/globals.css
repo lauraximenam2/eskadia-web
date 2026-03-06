@@ -16,6 +16,14 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-jura), system-ui, sans-serif;
+  }
+
+  code, pre, kbd, samp {
+    font-family: var(--font-chakra-petch), monospace;
+  }
+
   /* Smooth scrolling */
   html {
     scroll-behavior: smooth;

@@ -15,106 +15,106 @@ export default function PricingPage() {
   const plans = [
     {
       name: "Starter",
-      description: "Perfect for individuals and small teams",
+      description: "Perfecto para emprendedores y equipos pequeños",
       monthlyPrice: 29,
       annualPrice: 24,
       features: [
-        "Up to 1,000 contacts",
-        "Basic automation workflows",
-        "Email support",
-        "5 team members",
-        "10 integrations",
-        "Mobile app access",
-        "Basic reporting",
+        "Hasta 1.000 contactos",
+        "Automatizaciones básicas",
+        "Soporte por email",
+        "5 miembros del equipo",
+        "10 integraciones",
+        "App móvil",
+        "Informes básicos",
       ],
       limitations: [
-        "No API access",
-        "No custom branding",
-        "Limited workflow complexity",
+        "Sin acceso a API",
+        "Sin marca personalizada",
+        "Flujos de trabajo limitados",
       ],
-      cta: "Start Free Trial",
+      cta: "Prueba gratis",
       highlighted: false,
     },
     {
       name: "Professional",
-      description: "For growing teams that need more power",
+      description: "Para equipos en crecimiento que necesitan más potencia",
       monthlyPrice: 99,
       annualPrice: 82,
       features: [
-        "Up to 10,000 contacts",
-        "Advanced automation",
-        "Priority support",
-        "Unlimited team members",
-        "50 integrations",
-        "API access",
-        "Custom reports",
-        "Advanced analytics",
-        "Custom branding",
-        "Dedicated account manager",
+        "Hasta 10.000 contactos",
+        "Automatizaciones avanzadas",
+        "Soporte prioritario",
+        "Miembros ilimitados",
+        "50 integraciones",
+        "Acceso a API",
+        "Informes personalizados",
+        "Analítica avanzada",
+        "Marca personalizada",
+        "Account manager dedicado",
       ],
       limitations: [],
-      cta: "Start Free Trial",
+      cta: "Prueba gratis",
       highlighted: true,
     },
     {
       name: "Enterprise",
-      description: "For large organizations with custom needs",
+      description: "Para organizaciones grandes con necesidades específicas",
       monthlyPrice: 299,
       annualPrice: 249,
       features: [
-        "Unlimited contacts",
-        "Custom automation",
-        "24/7 dedicated support",
-        "Unlimited team members",
-        "Unlimited integrations",
-        "Advanced API access",
-        "Custom dashboards",
-        "SSO & advanced security",
-        "Custom SLA",
-        "Training & onboarding",
-        "Priority feature requests",
+        "Contactos ilimitados",
+        "Automatización personalizada",
+        "Soporte dedicado 24/7",
+        "Miembros ilimitados",
+        "Integraciones ilimitadas",
+        "API avanzada",
+        "Dashboards personalizados",
+        "SSO y seguridad avanzada",
+        "SLA personalizado",
+        "Formación y onboarding",
+        "Solicitudes de funcionalidades prioritarias",
       ],
       limitations: [],
-      cta: "Contact Sales",
+      cta: "Contactar ventas",
       highlighted: false,
     },
   ];
 
   const faqs = [
     {
-      question: "Can I switch plans at any time?",
+      question: "¿Puedo cambiar de plan en cualquier momento?",
       answer:
-        "Yes! You can upgrade or downgrade your plan anytime. When upgrading, you'll be charged the prorated difference. When downgrading, the credit will be applied to your next billing cycle.",
+        "¡Sí! Puedes subir o bajar de plan cuando quieras. Al subir, se te cobrará la diferencia proporcional. Al bajar, el crédito se aplicará a tu próximo ciclo de facturación.",
     },
     {
-      question: "What payment methods do you accept?",
+      question: "¿Qué métodos de pago aceptáis?",
       answer:
-        "We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and for Enterprise plans, we also offer invoice billing.",
+        "Aceptamos todas las tarjetas principales (Visa, MasterCard, American Express), PayPal, y para planes Enterprise también ofrecemos facturación.",
     },
     {
-      question: "Is there a free trial?",
+      question: "¿Hay prueba gratuita?",
       answer:
-        "Yes! All plans include a 14-day free trial with full access to features. No credit card required to start your trial.",
+        "¡Sí! Todos los planes incluyen 14 días de prueba gratuita con acceso completo. No se requiere tarjeta de crédito para empezar.",
     },
     {
-      question: "What happens when I exceed my contact limit?",
+      question: "¿Qué pasa si supero mi límite de contactos?",
       answer:
-        "We'll notify you before you reach your limit. You can either upgrade to a higher plan or purchase additional contact capacity as an add-on.",
+        "Te notificaremos antes de llegar al límite. Puedes subir de plan o comprar capacidad adicional como complemento.",
     },
     {
-      question: "Do you offer refunds?",
+      question: "¿Ofrecéis reembolsos?",
       answer:
-        "Yes, we offer a 30-day money-back guarantee. If you're not satisfied for any reason, we'll refund your payment in full.",
+        "Sí, ofrecemos garantía de devolución de 30 días. Si no estás satisfecho por cualquier motivo, te devolvemos el pago completo.",
     },
     {
-      question: "Can I get a discount for non-profits?",
+      question: "¿Hay descuento para ONGs?",
       answer:
-        "Yes! We offer a 50% discount for registered non-profit organizations. Contact our sales team with your non-profit documentation to apply.",
+        "¡Sí! Ofrecemos un 50% de descuento para organizaciones sin ánimo de lucro registradas. Contacta con nuestro equipo de ventas con tu documentación.",
     },
     {
-      question: "What's included in support?",
+      question: "¿Qué incluye el soporte?",
       answer:
-        "Starter plans get email support (48h response), Professional gets priority email & chat support (4h response), and Enterprise gets 24/7 dedicated support with a dedicated account manager.",
+        "Starter: soporte por email (48h). Professional: email y chat prioritario (4h). Enterprise: soporte dedicado 24/7 con account manager.",
     },
   ];
 
@@ -133,15 +133,15 @@ export default function PricingPage() {
         <div className="text-center space-y-8">
           <h1 className="text-6xl font-bold">
             <GradientText as="span" animated={true}>
-              Simple Pricing
+              Precios simples
             </GradientText>
             <br />
-            That Scales With You
+            que escalan contigo
           </h1>
 
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Start free, scale seamlessly. No hidden fees, no surprises. Cancel
-            anytime.
+            Empieza gratis, escala sin complicaciones. Sin costes ocultos, sin
+            sorpresas. Cancela cuando quieras.
           </p>
 
           {/* Billing Toggle */}
@@ -151,12 +151,12 @@ export default function PricingPage() {
                 !isAnnual ? "text-foreground font-semibold" : "text-muted-foreground"
               }`}
             >
-              Monthly
+              Mensual
             </span>
             <button
               onClick={() => setIsAnnual(!isAnnual)}
               className="relative w-16 h-8 bg-card border border-border rounded-full transition-colors hover:border-primary"
-              aria-label="Toggle billing period"
+              aria-label="Cambiar periodo de facturación"
             >
               <div
                 className={`absolute top-1 left-1 w-6 h-6 bg-primary rounded-full transition-transform ${
@@ -169,11 +169,11 @@ export default function PricingPage() {
                 isAnnual ? "text-foreground font-semibold" : "text-muted-foreground"
               }`}
             >
-              Annual
+              Anual
             </span>
             {isAnnual && (
               <span className="px-3 py-1 bg-accent/20 text-accent rounded-full text-sm font-semibold">
-                Save up to 20%
+                Ahorra hasta un 20%
               </span>
             )}
           </div>
@@ -200,7 +200,7 @@ export default function PricingPage() {
                 <div className="p-8">
                   {plan.highlighted && (
                     <div className="inline-block px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-semibold mb-4">
-                      Most Popular
+                      Más popular
                     </div>
                   )}
 
@@ -211,22 +211,22 @@ export default function PricingPage() {
 
                   <div className="mb-6">
                     <div className="flex items-baseline gap-2">
-                      <span className="text-5xl font-bold">${price}</span>
-                      <span className="text-muted-foreground">/month</span>
+                      <span className="text-5xl font-bold">{price}€</span>
+                      <span className="text-muted-foreground">/mes</span>
                     </div>
                     {isAnnual && (
                       <p className="text-sm text-accent mt-2">
-                        Save ${savings}/year ({percentage}% off)
+                        Ahorra {savings}€/año ({percentage}% dto.)
                       </p>
                     )}
                     {!isAnnual && (
                       <p className="text-sm text-muted-foreground mt-2">
-                        Billed monthly
+                        Facturación mensual
                       </p>
                     )}
                     {isAnnual && (
                       <p className="text-sm text-muted-foreground mt-1">
-                        Billed annually at ${price * 12}
+                        Facturación anual: {price * 12}€
                       </p>
                     )}
                   </div>
@@ -237,7 +237,7 @@ export default function PricingPage() {
                   >
                     <Link
                       href={
-                        plan.cta === "Contact Sales"
+                        plan.cta === "Contactar ventas"
                           ? "/contact"
                           : "/get-started"
                       }
@@ -253,7 +253,7 @@ export default function PricingPage() {
 
                   <div className="mt-8 space-y-3">
                     <p className="font-semibold text-sm">
-                      Everything included:
+                      Todo incluido:
                     </p>
                     {plan.features.map((feature) => (
                       <div key={feature} className="flex items-start gap-3">
@@ -264,7 +264,7 @@ export default function PricingPage() {
                     {plan.limitations.length > 0 && (
                       <>
                         <p className="font-semibold text-sm pt-4">
-                          Not included:
+                          No incluido:
                         </p>
                         {plan.limitations.map((limitation) => (
                           <div key={limitation} className="flex items-start gap-3">
@@ -284,8 +284,8 @@ export default function PricingPage() {
         </div>
 
         <p className="text-center text-muted-foreground mt-12">
-          All plans include 14-day free trial • No credit card required •
-          Cancel anytime
+          Todos los planes incluyen 14 días de prueba gratis · Sin tarjeta de
+          crédito · Cancela cuando quieras
         </p>
       </section>
 
@@ -293,10 +293,10 @@ export default function PricingPage() {
       <section className="max-w-5xl mx-auto px-4 py-32">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">
-            <GradientText>Compare Plans</GradientText>
+            <GradientText>Comparar planes</GradientText>
           </h2>
           <p className="text-xl text-muted-foreground">
-            Choose the plan that fits your needs
+            Elige el plan que mejor se adapte a tus necesidades
           </p>
         </div>
 
@@ -305,7 +305,7 @@ export default function PricingPage() {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-border">
-                  <th className="text-left p-4 font-semibold">Feature</th>
+                  <th className="text-left p-4 font-semibold">Funcionalidad</th>
                   <th className="text-center p-4 font-semibold">Starter</th>
                   <th className="text-center p-4 font-semibold">Professional</th>
                   <th className="text-center p-4 font-semibold">Enterprise</th>
@@ -313,14 +313,14 @@ export default function PricingPage() {
               </thead>
               <tbody>
                 {[
-                  ["Contacts", "1,000", "10,000", "Unlimited"],
-                  ["Team Members", "5", "Unlimited", "Unlimited"],
-                  ["Integrations", "10", "50", "Unlimited"],
-                  ["API Access", "✗", "✓", "✓"],
-                  ["Custom Branding", "✗", "✓", "✓"],
-                  ["Priority Support", "✗", "✓", "✓"],
+                  ["Contactos", "1.000", "10.000", "Ilimitados"],
+                  ["Miembros", "5", "Ilimitados", "Ilimitados"],
+                  ["Integraciones", "10", "50", "Ilimitadas"],
+                  ["Acceso API", "✗", "✓", "✓"],
+                  ["Marca personalizada", "✗", "✓", "✓"],
+                  ["Soporte prioritario", "✗", "✓", "✓"],
                   ["SSO", "✗", "✗", "✓"],
-                  ["Dedicated Manager", "✗", "✗", "✓"],
+                  ["Manager dedicado", "✗", "✗", "✓"],
                 ].map(([feature, starter, pro, enterprise]) => (
                   <tr key={feature} className="border-b border-border">
                     <td className="p-4 text-muted-foreground">{feature}</td>
@@ -339,7 +339,7 @@ export default function PricingPage() {
       <section className="max-w-4xl mx-auto px-4 py-32">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">
-            <GradientText>Frequently Asked Questions</GradientText>
+            <GradientText>Preguntas frecuentes</GradientText>
           </h2>
         </div>
 
@@ -360,21 +360,23 @@ export default function PricingPage() {
         <GlassCard glow={true} animatedBorder={true}>
           <div className="p-16">
             <h2 className="text-4xl font-bold mb-4">
-              <GradientText>Ready to Get Started?</GradientText>
+              <GradientText>¿Listo para empezar?</GradientText>
             </h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Join thousands of teams automating their workflows with Eskadia
+              Únete a las empresas que ya automatizan sus flujos de trabajo con
+              Eskadia
             </p>
             <ShimmerButton shimmerColor="rgba(99, 102, 241, 0.3)">
               <Link
                 href="/get-started"
                 className="px-12 py-4 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors inline-block text-lg font-semibold"
               >
-                Start Free 14-Day Trial
+                Prueba gratis 14 días
               </Link>
             </ShimmerButton>
             <p className="text-sm text-muted-foreground mt-4">
-              No credit card required • Cancel anytime • Money-back guarantee
+              Sin tarjeta de crédito · Cancela cuando quieras · Garantía de
+              devolución
             </p>
           </div>
         </GlassCard>

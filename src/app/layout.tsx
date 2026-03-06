@@ -1,7 +1,54 @@
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
+import localFont from "next/font/local";
 import "./globals.css";
+
+const dmSans = localFont({
+  src: [
+    {
+      path: "../../public/fonts/dm-sans/DMSans-Variable.ttf",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/dm-sans/DMSans-Italic-Variable.ttf",
+      style: "italic",
+    },
+  ],
+  variable: "--font-dm-sans",
+  display: "swap",
+});
+
+const jura = localFont({
+  src: "../../public/fonts/jura/Jura-Variable.ttf",
+  variable: "--font-jura",
+  display: "swap",
+});
+
+const chakraPetch = localFont({
+  src: [
+    {
+      path: "../../public/fonts/chakra-petch/ChakraPetch-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/chakra-petch/ChakraPetch-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/chakra-petch/ChakraPetch-SemiBold.ttf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/chakra-petch/ChakraPetch-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-chakra-petch",
+  display: "swap",
+});
 import { Navbar, Footer } from "@/components/layout";
 import { DotGrid, CursorSpotlight } from "@/components/effects";
 import { ChatWidget } from "@/components/chat/chat-widget";
@@ -44,7 +91,7 @@ export default function RootLayout({
   return (
     <html lang="es" className="dark">
       <body
-        className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}
+        className={`${dmSans.variable} ${jura.variable} ${chakraPetch.variable} font-sans antialiased`}
       >
         {/* Background Effects */}
         <DotGrid />

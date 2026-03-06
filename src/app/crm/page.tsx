@@ -137,12 +137,12 @@ export default function CRMPage() {
     <>
       {/* Hero Section */}
       <section className="relative max-w-7xl mx-auto px-4 pt-10 pb-20">
-        <HeroWatermark src="/logos/solo-k-512.svg" alt="Eskadia CRM" size={420} />
+        <HeroWatermark src="/logos/logo-crm.svg" alt="Eskadia CRM" size={340} />
         <div className="relative z-10 text-center space-y-8 mb-16">
           <div className="flex justify-center">
-            <div className="w-20 h-20 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+            {/*             <div className="w-20 h-20 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center">
               <img src="/logos/logo-crm.svg" alt="Eskadia CRM" className="w-12 h-12" />
-            </div>
+            </div> */}
           </div>
           <h1 className="text-6xl font-bold">
             <GradientText as="span" animated={true}>
